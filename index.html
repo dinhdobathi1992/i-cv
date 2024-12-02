@@ -29,6 +29,9 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <!-- Chat CSS File -->
+  <link href="assets/css/chat.css" rel="stylesheet">
+
   <!-- =======================================================
   * Template Name: iPortfolio
   * Updated: Jan 09 2024 with Bootstrap v5.3.2
@@ -36,6 +39,8 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
@@ -64,6 +69,15 @@
           <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Experience</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i><span>Education</span></a></li>
           <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+          <li><a href="#askme" class="nav-link scrollto"><i class="bx bx-message-dots"></i> <span>Ask Me</span></a></li>
+          <li>
+            <a href="https://dinhdobathi5gmail-my.sharepoint.com/:b:/g/personal/info_dinhdobathi_com/EaQyfPMwfJlNhFKAFKlV0oMBKdl9jzYrEEiVOT4hAxl1pQ?e=sRWfo2"
+               class="nav-link"
+               target="_blank"
+               rel="noopener noreferrer">
+              <i class="bx bx-download"></i> <span>Download CV</span>
+            </a>
+          </li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
@@ -192,7 +206,7 @@
         <div class="row skills-content">
 
           <div class="col-lg-6" data-aos="fade-up" >
-            
+
             <div class="progress">
               <span class="skill">Kubernetes/Helm Chart <i class="val">80%</i></span>
               <div class="progress-bar-wrap">
@@ -478,10 +492,10 @@
           <div class="section-title">
             <h2>Testimonials</h2>
           </div>
-  
+
           <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
             <div class="swiper-wrapper">
-  
+
               <div class="swiper-slide">
                 <div class="testimonial-item" data-aos="fade-up">
                   <p>
@@ -502,7 +516,7 @@
                   <h4>Head of IT Operations at SmartPay</h4>
                 </div>
               </div><!-- End testimonial item -->
-  
+
               <div class="swiper-slide">
                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
                   <p>
@@ -511,15 +525,15 @@
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
 
-                  <p></p> 
-                  <p>&nbsp;</p> 
-                  <p></p> 
-                  <p>&nbsp;</p> 
-                  <p></p> 
-                  <p>&nbsp;</p> 
-                  <p>&nbsp;</p> 
                   <p></p>
-                  <p>   </p>  
+                  <p>&nbsp;</p>
+                  <p></p>
+                  <p>&nbsp;</p>
+                  <p></p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p></p>
+                  <p>   </p>
                   <hr>
                   <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                   <hr>
@@ -527,12 +541,12 @@
                   <h4>Sale Manager - DTC group </h4>
                 </div>
               </div><!-- End testimonial item -->
-  
+
               <div class="swiper-slide">
                 <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    I have been working with Thi for more than 3 years. Thi is an ambitious person with deep knowledge in the IT field. He often explores and review new technologies, as well as writing IT blogs. In the workplace, he is a very responsible employee and willing to stay late to finish urgent tasks. in All IT issues are well resolved and fast supported by him. 
+                    I have been working with Thi for more than 3 years. Thi is an ambitious person with deep knowledge in the IT field. He often explores and review new technologies, as well as writing IT blogs. In the workplace, he is a very responsible employee and willing to stay late to finish urgent tasks. in All IT issues are well resolved and fast supported by him.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                     <p>&nbsp;</p>
                   </p>
@@ -548,12 +562,12 @@
 
                 <p></p>
               </div><!-- End testimonial item -->
-  
+
             </div>
             <p></p>
             <div class="swiper-pagination"></div>
           </div>
-  
+
         </div>
 
       </div>
@@ -629,6 +643,56 @@
       </div>
     </section><!-- End Testimonials Section -->
 
+    <!-- ======= Ask Me Section ======= -->
+    <section id="askme" class="contact section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ask Me</h2>
+          <p>
+            I can help you find information about my background and experience. Try asking about:
+            <br>• Experience or work history
+            <br>• Education and certifications
+            <br>• Technical skills
+            <br>• Specific technologies (AWS, Kubernetes, DevOps)
+            <br>• Current role and responsibilities
+          </p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="chat-interface">
+              <!-- Chat Header -->
+              <div class="chat-header">
+                <i class="bx bx-message-square-dots"></i>
+                <span>Professional Chat Assistant</span>
+                <button id="export-pdf" class="export-button" title="Export conversation to PDF">
+                  <i class="bx bx-download"></i>
+                </button>
+              </div>
+
+              <!-- Chat Messages Container -->
+              <div class="chat-container">
+                <div id="chat-messages"></div>
+              </div>
+
+              <!-- Chat Input Area -->
+              <div class="chat-input-area">
+                <div class="input-group">
+                  <input type="text" id="user-input" class="form-control"
+                    placeholder="Type your question here... (e.g., 'What are your key skills?')"
+                    aria-label="Message">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary send-button" type="button" id="send-button">
+                      <i class="bx bx-send"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Ask Me Section -->
 
   </main><!-- End #main -->
 
@@ -648,9 +712,6 @@
     </div>
   </footer><!-- End  Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
@@ -664,6 +725,21 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- PDF Generation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <!-- Chat JS File -->
+  <script src="assets/js/config.js"></script>
+  <script>
+    // Add timestamp to force reload of chat.js
+    const script = document.createElement('script');
+    script.src = `assets/js/chat.js?v=${new Date().getTime()}`;
+    script.onload = function() {
+      const chat = new ChatInterface();
+    };
+    document.head.appendChild(script);
+  </script>
 
 </body>
 
