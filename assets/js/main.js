@@ -5,6 +5,7 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
 (function() {
   "use strict";
 
@@ -12,6 +13,7 @@
    * Easy selector helper function
    */
   const select = (el, all = false) => {
+    if (!el) return null;
     el = el.trim()
     if (all) {
       return [...document.querySelectorAll(el)]
@@ -35,7 +37,7 @@
   }
 
   /**
-   * Easy on scroll event listener 
+   * Easy on scroll event listener
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
@@ -190,7 +192,7 @@
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   const portfolioLightbox = GLightbox({
     selector: '.portfolio-lightbox'
@@ -255,8 +257,103 @@
   });
 
   /**
-   * Initiate Pure Counter 
+   * Initiate Pure Counter
    */
   new PureCounter();
+
+  /**
+   * PDF Generation
+   */
+  async function generateCV() {
+    try {
+      const button = document.getElementById('cv-download-btn');
+      if (!button) return;
+
+      const originalContent = button.innerHTML;
+      button.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> <span>Generating...</span>';
+      button.style.pointerEvents = 'none';
+
+      // Create content for PDF
+      const content = document.createElement('div');
+
+      // Get sections with safety checks
+      const aboutSection = document.getElementById('about')?.outerHTML || '';
+      const skillsSection = document.getElementById('skills')?.outerHTML || '';
+      const resumeSection = document.getElementById('resume')?.outerHTML || '';
+      const portfolioSection = document.getElementById('portfolio')?.outerHTML || '';
+
+      content.innerHTML = `
+        <div style="padding: 20px; font-family: 'Open Sans', sans-serif;">
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #149ddd; margin-bottom: 10px;">Thi - Professional CV</h1>
+            <p style="font-size: 1.2em; color: #45505b;">DevOps Engineer & SRE</p>
+          </div>
+          ${aboutSection}
+          ${skillsSection}
+          ${resumeSection}
+          ${portfolioSection}
+        </div>
+      `;
+
+      // Remove unwanted elements
+      content.querySelectorAll('.nav-link, .back-to-top, .mobile-nav-toggle, button, .chat-interface').forEach(el => {
+        el.remove();
+      });
+
+      const opt = {
+        margin: 1,
+        filename: 'Thi-DevOps-CV.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          letterRendering: true
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a4',
+          orientation: 'portrait'
+        }
+      };
+
+      await html2pdf().set(opt).from(content).save();
+
+    } catch (error) {
+      console.error('PDF generation failed:', error);
+      alert('Failed to generate PDF. Please try again.');
+    } finally {
+      const button = document.getElementById('cv-download-btn');
+      if (button) {
+        button.innerHTML = '<i class="bx bx-download"></i> <span>Download CV</span>';
+        button.style.pointerEvents = 'auto';
+      }
+    }
+  }
+
+  // Separate the event binding from the scrollto functionality
+  window.addEventListener('load', function() {
+    // Handle download button click
+    const downloadBtn = document.getElementById('cv-download-btn');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        generateCV();
+      });
+    }
+
+    // Handle scrollto links separately
+    const scrolltoLinks = document.querySelectorAll('.nav-link.scrollto');
+    scrolltoLinks.forEach(link => {
+      if (link.id !== 'cv-download-btn') {  // Skip the download button
+        link.addEventListener('click', function(e) {
+          if (this.hash) {
+            e.preventDefault();
+            scrollto(this.hash);
+          }
+        });
+      }
+    });
+  });
 
 })()
