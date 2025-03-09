@@ -32,6 +32,29 @@
   <!-- Chat CSS File -->
   <link href="assets/css/chat.css" rel="stylesheet">
 
+  <!-- Custom CSS -->
+  <style>
+    /* Make navigation icons bigger */
+    #navbar .nav-menu a i {
+      font-size: 24px;
+      padding-right: 8px;
+    }
+    
+    /* Add hover background effect */
+    #navbar .nav-menu a:hover, 
+    #navbar .nav-menu .active {
+      background-color: rgba(20, 157, 221, 0.1);
+      border-left: 3px solid #149ddd;
+    }
+    
+    /* Add a highlight for the current section */
+    #navbar .nav-menu a.active-section {
+      background-color: rgba(20, 157, 221, 0.2);
+      border-left: 3px solid #149ddd;
+      font-weight: 600;
+    }
+  </style>
+
   <!-- =======================================================
   * Template Name: iPortfolio
   * Updated: Jan 09 2024 with Bootstrap v5.3.2
@@ -41,6 +64,8 @@
   ======================================================== -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -65,6 +90,7 @@
         <ul>
           <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li><a href="#facts" class="nav-link scrollto"><i class="bx bx-chart"></i> <span>Career Highlights</span></a></li>
           <li><a href="#skills" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Skills</span></a></li>
           <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Experience</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i><span>Education</span></a></li>
@@ -108,29 +134,27 @@
 
         <div class="row">
           <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
+            <img src="assets/img/profile-img.jpg" class="img-fluid rounded shadow" alt="">
           </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Devops Engineer &amp; SRE.</h3>
-            <p style="font-size:20px" class="fst-italic" >
-              “It is not the strongest of the species that survive, nor the most intelligent, but the one most
-              responsive to change.”
+          <div class="col-lg-8 pt-4 pt-lg-0 content d-flex flex-column" data-aos="fade-left">
+            <h3 class="mb-3">Devops Engineer &amp; SRE.</h3>
+            <p class="fst-italic mb-4" style="font-size:18px">
+              "It is not the strongest of the species that survive, nor the most intelligent, but the one most
+              responsive to change."
             </p>
-            <div class="row" style="font-size:20px">
+            <div class="row mb-0">
               <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>YOB:</strong> <span> 1992</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>dinhdobathi.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+84-774921992</span></li>
-
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-2"><i class="bi bi-chevron-right text-primary"></i> <strong>YOB:</strong> <span>1992</span></li>
+                  <li class="mb-2"><i class="bi bi-chevron-right text-primary"></i> <strong>Website:</strong> <span>dinhdobathi.com</span></li>
+                  <li class="mb-2"><i class="bi bi-chevron-right text-primary"></i> <strong>Phone:</strong> <span>+84-774921992</span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>info@dinhdobathi.com</span>
-                  </li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>HCMC, VN</span></li>
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-2"><i class="bi bi-chevron-right text-primary"></i> <strong>Degree:</strong> <span>Bachelor</span></li>
+                  <li class="mb-2"><i class="bi bi-chevron-right text-primary"></i> <strong>Email:</strong> <span>info@dinhdobathi.com</span></li>
+                  <li class="mb-0"><i class="bi bi-chevron-right text-primary"></i> <strong>City:</strong> <span>HCMC, VN</span></li>
                 </ul>
               </div>
             </div>
@@ -141,57 +165,131 @@
     </section><!-- End About Section -->
 
     <!-- ======= Facts Section ======= -->
-    <!-- <section id="facts" class="facts">
+    <section id="facts" class="facts">
       <div class="container">
 
         <div class="section-title">
-          <h2>Facts</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-            in iste officiis commodi quidem hic quas.</p>
+          <h2>Career Highlights</h2>
+          <p>Key numbers that represent my professional journey and achievements throughout my career.</p>
         </div>
 
         <div class="row no-gutters">
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
             <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+              <i class="bi bi-calendar-check"></i>
+              <span data-purecounter-start="0" data-purecounter-end="9" data-purecounter-duration="1"
                 class="purecounter"></span>
-              <p><strong>Happy Clients</strong> consequuntur quae</p>
+              <i class="bi bi-question-circle-fill ms-2" style="font-size: 0.8rem; color: #149ddd; cursor: pointer;" 
+                 data-bs-toggle="tooltip" data-bs-placement="top" 
+                 title="Over 9 years of hands-on experience in IT operations, system administration, and DevOps practices across multiple industries."></i>
+              <p><strong>Years of Experience</strong> in IT & DevOps</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+              <i class="bi bi-award"></i>
+              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1"
                 class="purecounter"></span>
-              <p><strong>Projects</strong> adipisci atque cum quia aut</p>
+              <i class="bi bi-question-circle-fill ms-2" style="font-size: 0.8rem; color: #149ddd; cursor: pointer;" 
+                 data-bs-toggle="tooltip" data-bs-placement="top" 
+                 title="Earned industry-recognized certifications including AWS Solutions Architect, CKA, CKS, Terraform Associate, and Harness Certified Developer."></i>
+              <p><strong>Professional Certifications</strong> in cloud & DevOps</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="count-box">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
+              <i class="bi bi-building"></i>
+              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1"
                 class="purecounter"></span>
-              <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
+              <i class="bi bi-question-circle-fill ms-2" style="font-size: 0.8rem; color: #149ddd; cursor: pointer;" 
+                 data-bs-toggle="tooltip" data-bs-placement="top" 
+                 title="Contributed to the success of 6 different companies across finance, insurance, education, and technology sectors."></i>
+              <p><strong>Companies Served</strong> across various industries</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
             <div class="count-box">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
+              <i class="bi bi-cloud-check"></i>
+              <span data-purecounter-start="0" data-purecounter-end="40" data-purecounter-duration="1"
                 class="purecounter"></span>
-              <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
+              <i class="bi bi-question-circle-fill ms-2" style="font-size: 0.8rem; color: #149ddd; cursor: pointer;" 
+                 data-bs-toggle="tooltip" data-bs-placement="top" 
+                 title="Managed and optimized over 40 Kubernetes clusters using Terraform, ensuring high availability, security, and performance."></i>
+              <p><strong>Kubernetes Clusters</strong> managed & optimized</p>
             </div>
           </div>
 
         </div>
 
-      </div> -->
+        <div class="row no-gutters mt-4">
+          <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="400">
+            <div class="count-box">
+              <i class="bi bi-graph-down-arrow"></i>
+              <span data-purecounter-start="0" data-purecounter-end="30" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <i class="bi bi-question-circle-fill ms-2" style="font-size: 0.8rem; color: #149ddd; cursor: pointer;" 
+                 data-bs-toggle="tooltip" data-bs-placement="top" 
+                 title="Implemented Karpenter for auto-scaling, resulting in 30% reduction in EC2 costs while maintaining optimal performance."></i>
+              <p><strong>% EC2 Cost Reduction</strong> with Karpenter implementation</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="500">
+            <div class="count-box">
+              <i class="bi bi-speedometer2"></i>
+              <span data-purecounter-start="0" data-purecounter-end="30" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <i class="bi bi-question-circle-fill ms-2" style="font-size: 0.8rem; color: #149ddd; cursor: pointer;" 
+                 data-bs-toggle="tooltip" data-bs-placement="top" 
+                 title="Restructured CI/CD pipelines and optimized build processes, reducing pipeline runtime by 30% and improving developer productivity."></i>
+              <p><strong>% Pipeline Runtime Reduction</strong> through optimization</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="600">
+            <div class="count-box">
+              <i class="bi bi-cash-coin"></i>
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <i class="bi bi-question-circle-fill ms-2" style="font-size: 0.8rem; color: #149ddd; cursor: pointer;" 
+                 data-bs-toggle="tooltip" data-bs-placement="top" 
+                 title="Implemented hybrid runners for CI/CD pipelines, reducing infrastructure costs by 20% while maintaining build performance."></i>
+              <p><strong>% CI/CD Cost Savings</strong> with hybrid runners implementation</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row no-gutters mt-4">
+          <div class="col-lg-6 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="700">
+            <div class="count-box">
+              <i class="bi bi-people-fill"></i>
+              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <i class="bi bi-question-circle-fill ms-2" style="font-size: 0.8rem; color: #149ddd; cursor: pointer;" 
+                 data-bs-toggle="tooltip" data-bs-placement="top" 
+                 title="Led a team of 5 highly skilled engineers in implementing complex technical solutions and driving innovation in DevOps practices."></i>
+              <p><strong>Excellent Engineers</strong> led in high-impact technical teams</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="700">
+            <div class="count-box">
+              <i class="bi bi-pc-display"></i>
+              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <i class="bi bi-question-circle-fill ms-2" style="font-size: 0.8rem; color: #149ddd; cursor: pointer;" 
+                 data-bs-toggle="tooltip" data-bs-placement="top" 
+                 title="Managed IT infrastructure and provided technical support for 150 end users, ensuring seamless operations across servers, networks, and workstations."></i>
+              <p><strong>End Users Supported</strong> across servers, networks, and IT infrastructure</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section><!-- End Facts Section -->
 
     <!-- ======= Skills Section ======= -->
@@ -402,85 +500,55 @@
 
         <div class="section-title">
           <h2>Education</h2>
-
         </div>
 
-        <ul style="list-style-type:disc">
-
-            <div class="row" data-aos="fade-up">
-              <li>
-              <div class="resume-item">
-                <h4><b>AWS Certified Solutions Architect – Associate</b></h4>
-                <h5>2023</h5>
-                <p><em><b>AWS</b> </em></p>
-              </div>
-            </li>
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-6">
+            <div class="education-item mb-4">
+              <h4><b>AWS Certified Solutions Architect – Associate</b></h4>
+              <h5>2023</h5>
+              <p><em><b>AWS</b> </em></p>
             </div>
 
-
-          <div class="row" data-aos="fade-up">
-            <li>
-            <div class="resume-item">
+            <div class="education-item mb-4">
               <h4><b>Harness Certified Developer - CI/CD</b></h4>
               <h5>2023</h5>
               <p><em><b>Harness</b> </em></p>
             </div>
-            </li>
+
+            <div class="education-item mb-4">
+              <h4><b>KUBERNETES ADMINISTRATOR (CKA)</b> </h4>
+              <h5>2022</h5>
+              <p><em><b>Cloud Native Computing Foundation (CNCF)</b> </em></p>
+            </div>
+
+            <div class="education-item mb-4">
+              <h4><b>Certified Kubernetes Security Specialist (CKS)</b></h4>
+              <h5>2022</h5>
+              <p><em><b>Cloud Native Computing Foundation (CNCF)</b> </em></p>
+            </div>
           </div>
 
-            <div class="row" data-aos="fade-up">
-              <li>
-              <div class="resume-item">
-                <h4><b>KUBERNETES ADMINISTRATOR (CKA)</b> </h4>
-                <h5>2022</h5>
-                <p><em><b>Cloud Native Computing Foundation (CNCF)</b> </em></p>
-              </div>
-              </li>
+          <div class="col-lg-6">
+            <div class="education-item mb-4">
+              <h4><b>Terraform Associate</b></h4>
+              <h5>2022</h5>
+              <p><em><b>HashiCorp</b> </em></p>
             </div>
 
-
-            <div class="row" data-aos="fade-up">
-              <li>
-              <div class="resume-item">
-                <h4><b>Certified Kubernetes Security Specialist (CKS)</b></h4>
-                <h5>2022</h5>
-                <p><em><b>Cloud Native Computing Foundation (CNCF)</b> </em></p>
-              </div>
-              </li>
+            <div class="education-item mb-4">
+              <h4><b>Bachelor of Computer Science</b></h4>
+              <h5>2011 - 2017</h5>
+              <p><em><b>Ton Duc Thang University</b> - HCMC, VN </em></p>
             </div>
 
-            <div class="row" data-aos="fade-up">
-              <li>
-              <div class="resume-item">
-                <h4><b>Terraform Associate</b></h4>
-                <h5>2022</h5>
-                <p><em><b>HashiCorp</b> </em></p>
-              </div>
-              </li>
+            <div class="education-item mb-4">
+              <h4><b>Network & System Engineering</b></h4>
+              <h5>2011 - 2013</h5>
+              <p><em><b>NIIT Hoa Sen</b> - HCMC, VN </em></p>
             </div>
-
-            <div class="row" data-aos="fade-up">
-              <li>
-              <div class="resume-item">
-                <h4><b>Bachelor of Computer Science</b></h4>
-                <h5>2011 - 2017</h5>
-                <p><em><b>Ton Duc Thang University</b> - HCMC, VN </em></p>
-              </div>
-              </li>
-            </div>
-
-            <div class="row" data-aos="fade-up">
-              <li>
-              <div class="resume-item">
-                <h4><b>Network & System Engineering</b></h4>
-                <h5>2011 - 2013</h5>
-                <p><em><b>NIIT Hoa Sen</b> - HCMC, VN </em></p>
-              </div>
-              </li>
-            </div>
-        </ul>
-      </div>
-
+          </div>
+        </div>
       </div>
     </section><!-- End Portfolio Section -->
 
@@ -739,6 +807,50 @@
       const chat = new ChatInterface();
     };
     document.head.appendChild(script);
+  </script>
+
+  <!-- Initialize tooltips -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    });
+  </script>
+
+  <!-- Highlight current section in navigation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all sections
+      const sections = document.querySelectorAll('section[id]');
+      
+      // Add scroll event listener
+      window.addEventListener('scroll', function() {
+        // Get current scroll position
+        const scrollY = window.pageYOffset;
+        
+        // Loop through sections to find the current one
+        sections.forEach(current => {
+          const sectionHeight = current.offsetHeight;
+          const sectionTop = current.offsetTop - 100; // Adjust offset as needed
+          const sectionId = current.getAttribute('id');
+          
+          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            // Remove active-section class from all links
+            document.querySelectorAll('.nav-menu a').forEach(a => {
+              a.classList.remove('active-section');
+            });
+            
+            // Add active-section class to current section link
+            const activeLink = document.querySelector(`.nav-menu a[href*=${sectionId}]`);
+            if (activeLink) {
+              activeLink.classList.add('active-section');
+            }
+          }
+        });
+      });
+    });
   </script>
 
 </body>
