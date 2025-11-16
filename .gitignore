@@ -1,3 +1,24 @@
-.vercel
-assets/js/config.js
+# API Keys and Secrets
+assets/js/chat-config.js
 .env
+.env.local
+.env*.local
+*.key
+.vercel
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
