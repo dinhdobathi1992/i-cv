@@ -187,28 +187,19 @@
             z-index: -1;
         }
 
-        .hero-background::before {
-            content: '';
+        /* Particles.js Canvas */
+        #particles-js {
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
-            top: 10%;
-            right: 10%;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
 
-        .hero-background::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
-            bottom: 10%;
-            left: 10%;
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite reverse;
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         @keyframes float {
@@ -225,6 +216,8 @@
             max-width: 900px;
             padding: 2rem;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-badge {
@@ -1039,6 +1032,7 @@
     ======================================== -->
     <section id="home" class="hero-section">
         <div class="hero-background"></div>
+        <div id="particles-js"></div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge" data-aos="fade-down">
@@ -1659,6 +1653,9 @@
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
 
+    <!-- Particles JS -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
     <!-- Chat Assistant JS - Vercel Version -->
     <script src="assets/js/chat-assistant-vercel.js"></script>
 
@@ -1756,6 +1753,98 @@
             contactForm.addEventListener('submit', function(e) {
                 // Form will be handled by contact.php
                 // Add any additional client-side validation here if needed
+            });
+        }
+
+        // Initialize Particles.js
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#3b82f6'
+                    },
+                    shape: {
+                        type: 'circle',
+                        stroke: {
+                            width: 0,
+                            color: '#000000'
+                        }
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: false,
+                        anim: {
+                            enable: false,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 40,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#3b82f6',
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'grab'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        push: {
+                            particles_nb: 4
+                        }
+                    }
+                },
+                retina_detect: true
             });
         }
     </script>
