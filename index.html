@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thi - Senior DevOps Engineer & SRE</title>
-    <meta name="description" content="Senior DevOps Engineer with 9 years of experience in cloud infrastructure, Kubernetes, CI/CD, and infrastructure automation">
+    <meta name="description"
+        content="Senior DevOps Engineer with 9 years of experience in cloud infrastructure, Kubernetes, CI/CD, and infrastructure automation">
     <meta name="keywords" content="DevOps, SRE, AWS, Kubernetes, Terraform, CI/CD, System Administrator">
 
     <!-- Favicons -->
@@ -13,14 +14,16 @@
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    
+
     <!-- Chat Slide CSS -->
     <link href="assets/css/chat-slide.css" rel="stylesheet">
 
@@ -74,9 +77,10 @@
            NAVIGATION
         ======================================== */
         .navbar {
-            background: rgba(15, 23, 42, 0.95) !important;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(15, 23, 42, 0.8) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
             position: fixed;
             width: 100%;
             top: 0;
@@ -86,17 +90,25 @@
         }
 
         .navbar.scrolled {
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(15, 23, 42, 0.95) !important;
         }
 
         .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient-primary);
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #22d3ee, #3b82f6, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: #3b82f6 !important;
+            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.6));
+            letter-spacing: -1px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.8));
+            transform: scale(1.05);
         }
 
         .nav-link {
@@ -108,13 +120,15 @@
         }
 
         .nav-link:hover {
-            color: var(--text-primary);
+            color: #60a5fa;
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
         }
 
         .nav-link.active {
-            color: #fbbf24 !important;
-            background: rgba(251, 191, 36, 0.1) !important;
+            color: #60a5fa !important;
+            background: rgba(59, 130, 246, 0.1) !important;
             border-radius: 8px;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
         }
 
         .nav-link::after {
@@ -124,9 +138,10 @@
             left: 50%;
             width: 0;
             height: 2px;
-            background: #fbbf24;
+            background: #60a5fa;
             transition: all 0.3s ease;
             transform: translateX(-50%);
+            box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
         }
 
         .nav-link:hover::after,
@@ -137,17 +152,19 @@
         .btn-download-cv {
             background: var(--gradient-primary);
             color: white;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
         }
 
         .btn-download-cv:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.8);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: white;
         }
 
         /* Mobile Menu Toggle */
@@ -203,9 +220,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-20px);
             }
@@ -227,7 +247,7 @@
             color: var(--primary-color);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
-            font-size: 0.875rem;
+            font-size: 1.125rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
             animation: fadeInDown 1s ease;
@@ -242,10 +262,11 @@
         }
 
         .hero-gradient-text {
-            background: var(--gradient-name);
+            background: linear-gradient(to right, #22d3ee, #3b82f6, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4));
         }
 
         .hero-description {
@@ -281,25 +302,29 @@
         .btn-hero-primary {
             background: var(--gradient-primary);
             color: white;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-hero-primary:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-xl);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.7);
             color: white;
         }
 
         .btn-hero-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: var(--text-primary);
-            border: 2px solid var(--border-color);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-hero-secondary:hover {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.1);
             border-color: var(--primary-color);
-            color: var(--primary-color);
+            color: white;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
         }
 
         .hero-stats {
@@ -313,13 +338,31 @@
 
         .stat-item {
             text-align: center;
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(180deg, #ffffff 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
+            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+            margin-bottom: 0.25rem;
         }
 
         .stat-label {
@@ -333,6 +376,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -344,6 +388,7 @@
                 opacity: 0;
                 transform: translateY(-30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -370,7 +415,7 @@
             color: var(--primary-color);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
-            font-size: 0.875rem;
+            font-size: 1.125rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
@@ -464,17 +509,34 @@
         }
 
         .skill-card {
-            background: var(--card-bg);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
             border-radius: 15px;
             padding: 2rem;
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.15), inset 0 0 20px rgba(59, 130, 246, 0.1);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+
+            /* Effect Configuration */
+            --icon-saturate: 5;
+            --icon-brightness: 1.3;
+            --icon-scale: 2.5;
+            --icon-opacity: 0.25;
+            --border-width: 2;
+            --border-blur: 10;
+            --border-saturate: 4.2;
+            --border-brightness: 2.5;
+            --border-contrast: 2.5;
+
+            --pointer-x: 0;
+            --pointer-y: 0;
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: var(--shadow-xl);
+            border-color: rgba(96, 165, 250, 0.8);
+            box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.5), inset 0 0 30px rgba(59, 130, 246, 0.2);
         }
 
         .skill-icon {
@@ -513,18 +575,45 @@
         }
 
         .highlight-card {
-            background: var(--card-bg);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
             border-radius: 15px;
             padding: 2rem;
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.15), inset 0 0 20px rgba(59, 130, 246, 0.1);
             transition: all 0.3s ease;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+
+            /* Effect Configuration (Matches CodePen) */
+            --icon-saturate: 5;
+            --icon-brightness: 1.3;
+            --icon-scale: 2.5;
+            --icon-opacity: 0.25;
+            --border-width: 2;
+            --border-blur: 10;
+            --border-saturate: 4.2;
+            --border-brightness: 2.5;
+            --border-contrast: 2.5;
+
+            --pointer-x: 0;
+            --pointer-y: 0;
         }
 
         .highlight-card:hover {
             transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: var(--shadow-xl);
+            border-color: rgba(96, 165, 250, 0.8);
+            box-shadow: 0 10px 40px -10px rgba(59, 130, 246, 0.5), inset 0 0 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .highlight-card:active {
+            transform: translateY(-3px) scale(0.98);
+        }
+
+        .highlight-card>div:not(.icon-blur-container) {
+            position: relative;
+            z-index: 1;
+            background: transparent;
         }
 
         .highlight-icon {
@@ -538,15 +627,155 @@
             font-size: 1.75rem;
             margin: 0 auto 1.5rem;
             color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-card .icon-blur-container {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            transform: translate(calc(var(--pointer-x, 0) * 50px), calc(var(--pointer-y, 0) * 50px)) scale(var(--icon-scale, 2.5));
+
+            /* Use the SVG filter we added at the bottom of the page */
+            filter: url(#blur) saturate(var(--icon-saturate)) brightness(var(--icon-brightness));
+            /* Fallback for safety */
+            -webkit-filter: blur(25px) saturate(var(--icon-saturate)) brightness(var(--icon-brightness));
+
+            opacity: var(--icon-opacity, 0.4);
+            will-change: transform, filter;
+            pointer-events: none;
+            z-index: 0;
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .highlight-card .icon-blur-container .highlight-icon {
+            width: 120px;
+            height: 120px;
+            font-size: 5rem;
+            margin: 0 !important;
+            background: var(--gradient-primary);
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .highlight-card .icon-blur-container .highlight-icon i {
+            font-size: 5rem !important;
+            color: white !important;
+        }
+
+        .highlight-card::after {
+            content: '';
+            position: absolute;
+            pointer-events: none;
+            inset: 0;
+            border-radius: inherit;
+            border: calc(var(--border-width) * 1px) solid transparent;
+            backdrop-filter: blur(calc(var(--border-blur) * 1px)) saturate(var(--border-saturate)) brightness(var(--border-brightness)) contrast(var(--border-contrast));
+            -webkit-backdrop-filter: blur(calc(var(--border-blur) * 1px)) saturate(var(--border-saturate)) brightness(var(--border-brightness)) contrast(var(--border-contrast));
+            mask: linear-gradient(#fff 0 0) border-box, linear-gradient(#fff 0 0) padding-box;
+            -webkit-mask: linear-gradient(#fff 0 0) border-box, linear-gradient(#fff 0 0) padding-box;
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            z-index: 3;
+            transform: translateZ(0);
+        }
+
+        /* Shared Glass Border for Skills and Certs */
+        .skill-card::after,
+        .cert-card::after {
+            content: '';
+            position: absolute;
+            pointer-events: none;
+            inset: 0;
+            border-radius: inherit;
+            border: calc(var(--border-width) * 1px) solid transparent;
+            backdrop-filter: blur(calc(var(--border-blur) * 1px)) saturate(var(--border-saturate)) brightness(var(--border-brightness)) contrast(var(--border-contrast));
+            -webkit-backdrop-filter: blur(calc(var(--border-blur) * 1px)) saturate(var(--border-saturate)) brightness(var(--border-brightness)) contrast(var(--border-contrast));
+            mask: linear-gradient(#fff 0 0) border-box, linear-gradient(#fff 0 0) padding-box;
+            -webkit-mask: linear-gradient(#fff 0 0) border-box, linear-gradient(#fff 0 0) padding-box;
+            mask-composite: exclude;
+            -webkit-mask-composite: xor;
+            z-index: 3;
+            transform: translateZ(0);
+        }
+
+        /* Shared Blur Container for Skills and Certs */
+        .skill-card .icon-blur-container,
+        .cert-card .icon-blur-container {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            transform: translate(calc(var(--pointer-x, 0) * 50px), calc(var(--pointer-y, 0) * 50px)) scale(var(--icon-scale, 2.5));
+            filter: url(#blur) saturate(var(--icon-saturate)) brightness(var(--icon-brightness));
+            -webkit-filter: blur(25px) saturate(var(--icon-saturate)) brightness(var(--icon-brightness));
+            opacity: var(--icon-opacity, 0.4);
+            will-change: transform, filter;
+            pointer-events: none;
+            z-index: 0;
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Specific Blur Icon Styling */
+        .skill-card .icon-blur-container .skill-icon {
+            width: 100px;
+            height: 100px;
+            font-size: 4rem;
+            margin: 0 !important;
+            background: var(--gradient-primary);
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .skill-card .icon-blur-container .skill-icon i {
+            font-size: 4rem !important;
+            color: white !important;
+        }
+
+        .cert-card .icon-blur-container .cert-icon {
+            width: 120px;
+            height: 120px;
+            font-size: 5rem;
+            margin: 0 !important;
+            background: var(--gradient-success);
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .cert-card .icon-blur-container .cert-icon i {
+            font-size: 5rem !important;
+            color: white !important;
+        }
+
+        /* Content z-indexing */
+        .skill-card>*:not(.icon-blur-container),
+        .cert-card>*:not(.icon-blur-container) {
+            position: relative;
+            z-index: 1;
         }
 
         .highlight-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #3b82f6;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(180deg, #ffffff 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
             line-height: 1;
             margin-bottom: 0.5rem;
+            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
         }
 
         .highlight-label {
@@ -684,17 +913,34 @@
         }
 
         .cert-card {
-            background: var(--card-bg);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
             border-radius: 15px;
             padding: 2rem;
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.15), inset 0 0 20px rgba(59, 130, 246, 0.1);
             transition: all 0.3s ease;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+
+            /* Effect Configuration */
+            --icon-saturate: 5;
+            --icon-brightness: 1.3;
+            --icon-scale: 2.5;
+            --icon-opacity: 0.25;
+            --border-width: 2;
+            --border-blur: 10;
+            --border-saturate: 4.2;
+            --border-brightness: 2.5;
+            --border-contrast: 2.5;
+
+            --pointer-x: 0;
+            --pointer-y: 0;
         }
 
         .cert-card:hover {
             transform: translateY(-5px);
-            border-color: var(--secondary-color);
+            /* border-color: var(--secondary-color); */
             box-shadow: var(--shadow-xl);
         }
 
@@ -1017,8 +1263,8 @@
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                     <li class="nav-item ms-lg-2">
-                        <a href="https://dinhdobathi5gmail-my.sharepoint.com/:b:/g/personal/info_dinhdobathi_com/EaQyfPMwfJlNhFKAFKlV0oMBKdl9jzYrEEiVOT4hAxl1pQ?e=sRWfo2" 
-                           class="btn-download-cv" target="_blank" rel="noopener noreferrer">
+                        <a href="https://dinhdobathi5gmail-my.sharepoint.com/:b:/g/personal/info_dinhdobathi_com/EaQyfPMwfJlNhFKAFKlV0oMBKdl9jzYrEEiVOT4hAxl1pQ?e=sRWfo2"
+                            class="btn-download-cv" target="_blank" rel="noopener noreferrer">
                             <i class="bi bi-download me-2"></i>Download CV
                         </a>
                     </li>
@@ -1040,11 +1286,11 @@
                 </div>
                 <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
                     Hi, I'm <span class="hero-gradient-text">Thi</span><br>
-                    DevOps & Cloud Infrastructure Engineer
+                    <span class="hero-gradient-text">DevOps & Cloud Infrastructure Engineer</span>
                 </h1>
                 <p class="hero-description" data-aos="fade-up" data-aos-delay="200">
-                    9 years of experience building scalable cloud infrastructure, optimizing CI/CD pipelines, 
-                    and implementing DevOps best practices. Specialized in AWS, Kubernetes, Terraform, and 
+                    9 years of experience building scalable cloud infrastructure, optimizing CI/CD pipelines,
+                    and implementing DevOps best practices. Specialized in AWS, Kubernetes, Terraform, and
                     infrastructure automation for BFSI and enterprise clients.
                 </p>
                 <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
@@ -1097,18 +1343,19 @@
                     <div class="about-card">
                         <h3>DevOps Engineer & Site Reliability Engineer</h3>
                         <p>
-                            With 9 years of hands-on experience, I've specialized in building and maintaining 
-                            cloud infrastructure for BFSI (Banking, Financial Services, and Insurance) organizations. 
-                            My expertise lies in Kubernetes orchestration, AWS cloud services, and implementing 
+                            With 9 years of hands-on experience, I've specialized in building and maintaining
+                            cloud infrastructure for BFSI (Banking, Financial Services, and Insurance) organizations.
+                            My expertise lies in Kubernetes orchestration, AWS cloud services, and implementing
                             robust CI/CD pipelines that have reduced deployment time by up to 30%.
                         </p>
                         <p>
-                            I believe in continuous learning and collaboration. My approach combines technical 
-                            excellence with strong communication skills to bridge the gap between development 
+                            I believe in continuous learning and collaboration. My approach combines technical
+                            excellence with strong communication skills to bridge the gap between development
                             and operations teams.
                         </p>
-                        <blockquote style="border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 2rem 0; font-style: italic; color: var(--text-muted);">
-                            "It is not the strongest of the species that survive, nor the most intelligent, 
+                        <blockquote
+                            style="border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 2rem 0; font-style: italic; color: var(--text-muted);">
+                            "It is not the strongest of the species that survive, nor the most intelligent,
                             but the one most responsive to change."
                         </blockquote>
                         <ul class="about-info-list">
@@ -1153,80 +1400,143 @@
             </div>
             <div class="highlights-grid">
                 <div class="highlight-card" data-aos="fade-up" data-aos-delay="0">
-                    <div class="highlight-icon">
-                        <i class="bi bi-calendar-check"></i>
+                    <div class="icon-blur-container">
+                        <div class="highlight-icon">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
                     </div>
-                    <span class="highlight-number">9</span>
-                    <h4 class="highlight-label">Years of Experience</h4>
-                    <p class="highlight-description">in IT & DevOps</p>
+                    <div>
+                        <div class="highlight-icon">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <span class="highlight-number">9</span>
+                        <h4 class="highlight-label">Years of Experience</h4>
+                        <p class="highlight-description">in IT & DevOps</p>
+                    </div>
                 </div>
                 <div class="highlight-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="highlight-icon">
-                        <i class="bi bi-award"></i>
+                    <div class="icon-blur-container">
+                        <div class="highlight-icon">
+                            <i class="bi bi-award"></i>
+                        </div>
                     </div>
-                    <span class="highlight-number">5</span>
-                    <h4 class="highlight-label">Professional Certifications</h4>
-                    <p class="highlight-description">in cloud & DevOps</p>
+                    <div>
+                        <div class="highlight-icon">
+                            <i class="bi bi-award"></i>
+                        </div>
+                        <span class="highlight-number">5</span>
+                        <h4 class="highlight-label">Professional Certifications</h4>
+                        <p class="highlight-description">in cloud & DevOps</p>
+                    </div>
                 </div>
                 <div class="highlight-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="highlight-icon">
-                        <i class="bi bi-building"></i>
+                    <div class="icon-blur-container">
+                        <div class="highlight-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
                     </div>
-                    <span class="highlight-number">6</span>
-                    <h4 class="highlight-label">Companies Served</h4>
-                    <p class="highlight-description">across various industries</p>
+                    <div>
+                        <div class="highlight-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <span class="highlight-number">6</span>
+                        <h4 class="highlight-label">Companies Served</h4>
+                        <p class="highlight-description">across various industries</p>
+                    </div>
                 </div>
                 <div class="highlight-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="highlight-icon">
-                        <i class="bi bi-cloud-check"></i>
+                    <div class="icon-blur-container">
+                        <div class="highlight-icon">
+                            <i class="bi bi-cloud-check"></i>
+                        </div>
                     </div>
-                    <span class="highlight-number">40</span>
-                    <h4 class="highlight-label">Kubernetes Clusters</h4>
-                    <p class="highlight-description">managed & optimized</p>
+                    <div>
+                        <div class="highlight-icon">
+                            <i class="bi bi-cloud-check"></i>
+                        </div>
+                        <span class="highlight-number">40</span>
+                        <h4 class="highlight-label">Kubernetes Clusters</h4>
+                        <p class="highlight-description">managed & optimized</p>
+                    </div>
                 </div>
             </div>
             <div class="highlights-grid">
                 <div class="highlight-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="highlight-icon">
-                        <i class="bi bi-graph-down-arrow"></i>
+                    <div class="icon-blur-container">
+                        <div class="highlight-icon">
+                            <i class="bi bi-graph-down-arrow"></i>
+                        </div>
                     </div>
-                    <span class="highlight-number">30%</span>
-                    <h4 class="highlight-label">EC2 Cost Reduction</h4>
-                    <p class="highlight-description">with Karpenter implementation</p>
+                    <div>
+                        <div class="highlight-icon">
+                            <i class="bi bi-graph-down-arrow"></i>
+                        </div>
+                        <span class="highlight-number">30%</span>
+                        <h4 class="highlight-label">EC2 Cost Reduction</h4>
+                        <p class="highlight-description">with Karpenter implementation</p>
+                    </div>
                 </div>
                 <div class="highlight-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="highlight-icon">
-                        <i class="bi bi-speedometer2"></i>
+                    <div class="icon-blur-container">
+                        <div class="highlight-icon">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
                     </div>
-                    <span class="highlight-number">30%</span>
-                    <h4 class="highlight-label">Pipeline Runtime Reduction</h4>
-                    <p class="highlight-description">through optimization</p>
+                    <div>
+                        <div class="highlight-icon">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
+                        <span class="highlight-number">30%</span>
+                        <h4 class="highlight-label">Pipeline Runtime Reduction</h4>
+                        <p class="highlight-description">through optimization</p>
+                    </div>
                 </div>
                 <div class="highlight-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="highlight-icon">
-                        <i class="bi bi-cash-coin"></i>
+                    <div class="icon-blur-container">
+                        <div class="highlight-icon">
+                            <i class="bi bi-cash-coin"></i>
+                        </div>
                     </div>
-                    <span class="highlight-number">20%</span>
-                    <h4 class="highlight-label">CI/CD Cost Savings</h4>
-                    <p class="highlight-description">with hybrid runners implementation</p>
+                    <div>
+                        <div class="highlight-icon">
+                            <i class="bi bi-cash-coin"></i>
+                        </div>
+                        <span class="highlight-number">20%</span>
+                        <h4 class="highlight-label">CI/CD Cost Savings</h4>
+                        <p class="highlight-description">with hybrid runners implementation</p>
+                    </div>
                 </div>
                 <div class="highlight-card" data-aos="fade-up" data-aos-delay="700">
-                    <div class="highlight-icon">
-                        <i class="bi bi-people-fill"></i>
+                    <div class="icon-blur-container">
+                        <div class="highlight-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
                     </div>
-                    <span class="highlight-number">5</span>
-                    <h4 class="highlight-label">Excellent Engineers</h4>
-                    <p class="highlight-description">led in high-impact technical teams</p>
+                    <div>
+                        <div class="highlight-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <span class="highlight-number">5</span>
+                        <h4 class="highlight-label">Excellent Engineers</h4>
+                        <p class="highlight-description">led in high-impact technical teams</p>
+                    </div>
                 </div>
             </div>
             <div class="highlights-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                 <div class="highlight-card" data-aos="fade-up" data-aos-delay="800">
-                    <div class="highlight-icon">
-                        <i class="bi bi-pc-display"></i>
+                    <div class="icon-blur-container">
+                        <div class="highlight-icon">
+                            <i class="bi bi-pc-display"></i>
+                        </div>
                     </div>
-                    <span class="highlight-number">150</span>
-                    <h4 class="highlight-label">End Users Supported</h4>
-                    <p class="highlight-description">across servers, networks, and IT infrastructure</p>
+                    <div>
+                        <div class="highlight-icon">
+                            <i class="bi bi-pc-display"></i>
+                        </div>
+                        <span class="highlight-number">150</span>
+                        <h4 class="highlight-label">End Users Supported</h4>
+                        <p class="highlight-description">across servers, networks, and IT infrastructure</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1254,10 +1564,14 @@
                         <p class="timeline-company">GFG Group - HCMC, Vietnam</p>
                         <div class="timeline-description">
                             <ul>
-                                <li>Managed cloud-based infrastructure utilizing AWS & Azure, enhancing workflow orchestration for application deployment</li>
-                                <li>Migrated CI/CD pipelines from legacy systems to GitHub Actions, improving efficiency</li>
-                                <li>Oversaw AI platforms and tools, ensuring operational support for business processes</li>
-                                <li>Designed and implemented monitoring solutions to ensure system reliability and performance</li>
+                                <li>Managed cloud-based infrastructure utilizing AWS & Azure, enhancing workflow
+                                    orchestration for application deployment</li>
+                                <li>Migrated CI/CD pipelines from legacy systems to GitHub Actions, improving efficiency
+                                </li>
+                                <li>Oversaw AI platforms and tools, ensuring operational support for business processes
+                                </li>
+                                <li>Designed and implemented monitoring solutions to ensure system reliability and
+                                    performance</li>
                                 <li>Coached junior engineers in best practices for cloud infrastructure</li>
                             </ul>
                         </div>
@@ -1273,12 +1587,16 @@
                         <p class="timeline-company">GFT Group - HCMC, Vietnam</p>
                         <div class="timeline-description">
                             <ul>
-                                <li>Successfully transitioned CI Pipeline from Circle CI to Harness NextGen, improving deployment efficiency</li>
-                                <li>Led migration of CD Pipeline from Harness FirstGen to NextGen for 40+ Kubernetes clusters</li>
+                                <li>Successfully transitioned CI Pipeline from Circle CI to Harness NextGen, improving
+                                    deployment efficiency</li>
+                                <li>Led migration of CD Pipeline from Harness FirstGen to NextGen for 40+ Kubernetes
+                                    clusters</li>
                                 <li>Managed and optimized 40+ K8s clusters and 10+ components using Terraform IaC</li>
                                 <li>Implemented Karpenter for auto-scaling, achieving 30% EC2 cost reduction</li>
-                                <li>Maintained Helm charts for microservices and provided comprehensive pipeline support</li>
-                                <li>Continuously enhanced infrastructure to meet security requirements and ensure consistency</li>
+                                <li>Maintained Helm charts for microservices and provided comprehensive pipeline support
+                                </li>
+                                <li>Continuously enhanced infrastructure to meet security requirements and ensure
+                                    consistency</li>
                             </ul>
                         </div>
                     </div>
@@ -1293,7 +1611,8 @@
                         <p class="timeline-company">Manabie Vietnam - HCMC, Vietnam</p>
                         <div class="timeline-description">
                             <ul>
-                                <li>Restructured Helm Chart architecture and developed shared template library for subcharts</li>
+                                <li>Restructured Helm Chart architecture and developed shared template library for
+                                    subcharts</li>
                                 <li>Achieved 30% reduction in pipeline runtime through optimization initiatives</li>
                                 <li>Led incident response efforts, minimizing service downtime to less than 4 hours</li>
                                 <li>Implemented GitHub Actions pipelines and local deployment tools</li>
@@ -1313,7 +1632,8 @@
                         <div class="timeline-description">
                             <ul>
                                 <li>Implemented DevOps principles to enhance application deployment processes</li>
-                                <li>Managed CI/CD tools including Docker and Jenkins for seamless SCM to production deployments</li>
+                                <li>Managed CI/CD tools including Docker and Jenkins for seamless SCM to production
+                                    deployments</li>
                                 <li>Automated MSSQL database deployments using Redgate Source Control</li>
                                 <li>Utilized Ansible and Ansible Tower for automation and software deployments</li>
                                 <li>Monitored server health, performance metrics, and audit logs</li>
@@ -1332,8 +1652,10 @@
                         <p class="timeline-company">SGH Asia Ltd - HCMC, Vietnam</p>
                         <div class="timeline-description">
                             <ul>
-                                <li>Managed infrastructure for 150+ end users including servers, networks, and workstations</li>
-                                <li>Ensured seamless operation of all infrastructure components across the organization</li>
+                                <li>Managed infrastructure for 150+ end users including servers, networks, and
+                                    workstations</li>
+                                <li>Ensured seamless operation of all infrastructure components across the organization
+                                </li>
                                 <li>Led technical upgrades for firewall, VMware, and server infrastructure</li>
                                 <li>Implemented ISO-27001 framework and Disaster Recovery Plan</li>
                                 <li>Administered ITSM software solution for incident and change management</li>
@@ -1354,7 +1676,8 @@
                             <ul>
                                 <li>Performed comprehensive system administration for IT infrastructure</li>
                                 <li>Managed Windows, Linux, Backup/Restore, LAN/WAN/VPN, VMware, and AD/DNS</li>
-                                <li>Led technical projects including VMWARE, UNIFI NETWORK, MERAKI NETWORK, NAS, and CCTV</li>
+                                <li>Led technical projects including VMWARE, UNIFI NETWORK, MERAKI NETWORK, NAS, and
+                                    CCTV</li>
                                 <li>Provided technical support to sales teams</li>
                                 <li>Managed servers, workstations, and network applications</li>
                             </ul>
@@ -1379,103 +1702,173 @@
             </div>
             <div class="skills-grid">
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
-                    <div class="skill-icon">
-                        <i class="bi bi-gear-fill"></i>
+                    <div class="icon-blur-container">
+                        <div class="skill-icon">
+                            <i class="bi bi-gear-fill"></i>
+                        </div>
                     </div>
-                    <h4 class="skill-name">Kubernetes / Helm</h4>
-                    <p class="skill-level">Proficient Engineer - 80%</p>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 80%"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="skill-icon">
+                            <i class="bi bi-gear-fill"></i>
+                        </div>
+                        <h4 class="skill-name">Kubernetes / Helm</h4>
+                        <p class="skill-level">Proficient Engineer - 80%</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 80%"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="skill-icon">
-                        <i class="bi bi-cloud-fill"></i>
+                    <div class="icon-blur-container">
+                        <div class="skill-icon">
+                            <i class="bi bi-cloud-fill"></i>
+                        </div>
                     </div>
-                    <h4 class="skill-name">AWS / Azure</h4>
-                    <p class="skill-level">Experienced Engineer - 70%</p>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 70%"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="skill-icon">
+                            <i class="bi bi-cloud-fill"></i>
+                        </div>
+                        <h4 class="skill-name">AWS / Azure</h4>
+                        <p class="skill-level">Experienced Engineer - 70%</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 70%"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-icon">
-                        <i class="bi bi-layers-fill"></i>
+                    <div class="icon-blur-container">
+                        <div class="skill-icon">
+                            <i class="bi bi-layers-fill"></i>
+                        </div>
                     </div>
-                    <h4 class="skill-name">Terraform (IaC)</h4>
-                    <p class="skill-level">Proficient Engineer - 75%</p>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 75%"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="skill-icon">
+                            <i class="bi bi-layers-fill"></i>
+                        </div>
+                        <h4 class="skill-name">Terraform (IaC)</h4>
+                        <p class="skill-level">Proficient Engineer - 75%</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 75%"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="skill-icon">
-                        <i class="bi bi-arrow-repeat"></i>
+                    <div class="icon-blur-container">
+                        <div class="skill-icon">
+                            <i class="bi bi-arrow-repeat"></i>
+                        </div>
                     </div>
-                    <h4 class="skill-name">CI/CD - GitHub Actions / Harness</h4>
-                    <p class="skill-level">Proficient Engineer - 80%</p>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 80%"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="skill-icon">
+                            <i class="bi bi-arrow-repeat"></i>
+                        </div>
+                        <h4 class="skill-name">CI/CD - GitHub Actions / Harness</h4>
+                        <p class="skill-level">Proficient Engineer - 80%</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 80%"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="skill-icon">
-                        <i class="bi bi-terminal-fill"></i>
+                    <div class="icon-blur-container">
+                        <div class="skill-icon">
+                            <i class="bi bi-terminal-fill"></i>
+                        </div>
                     </div>
-                    <h4 class="skill-name">Shell Script / PowerShell</h4>
-                    <p class="skill-level">Experienced Engineer - 75%</p>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 75%"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="skill-icon">
+                            <i class="bi bi-terminal-fill"></i>
+                        </div>
+                        <h4 class="skill-name">Shell Script / PowerShell</h4>
+                        <p class="skill-level">Experienced Engineer - 75%</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 75%"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="skill-icon">
-                        <i class="bi bi-laptop-fill"></i>
+                    <div class="icon-blur-container">
+                        <div class="skill-icon">
+                            <i class="bi bi-laptop-fill"></i>
+                        </div>
                     </div>
-                    <h4 class="skill-name">Linux / Windows / MacOS</h4>
-                    <p class="skill-level">Senior Engineer - 90%</p>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 90%"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="skill-icon">
+                            <i class="bi bi-laptop-fill"></i>
+                        </div>
+                        <h4 class="skill-name">Linux / Windows / MacOS</h4>
+                        <p class="skill-level">Senior Engineer - 90%</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 90%"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="skill-icon">
-                        <i class="bi bi-shield-fill-check"></i>
+                    <div class="icon-blur-container">
+                        <div class="skill-icon">
+                            <i class="bi bi-shield-fill-check"></i>
+                        </div>
                     </div>
-                    <h4 class="skill-name">Security - ISO 27001</h4>
-                    <p class="skill-level">Experienced Engineer - 70%</p>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 70%"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="skill-icon">
+                            <i class="bi bi-shield-fill-check"></i>
+                        </div>
+                        <h4 class="skill-name">Security - ISO 27001</h4>
+                        <p class="skill-level">Experienced Engineer - 70%</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 70%"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="700">
-                    <div class="skill-icon">
-                        <i class="bi bi-activity"></i>
+                    <div class="icon-blur-container">
+                        <div class="skill-icon">
+                            <i class="bi bi-activity"></i>
+                        </div>
                     </div>
-                    <h4 class="skill-name">Monitoring & Observability</h4>
-                    <p class="skill-level">Proficient Engineer - 75%</p>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 75%"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="skill-icon">
+                            <i class="bi bi-activity"></i>
+                        </div>
+                        <h4 class="skill-name">Monitoring & Observability</h4>
+                        <p class="skill-level">Proficient Engineer - 75%</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 75%"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="800">
-                    <div class="skill-icon">
-                        <i class="bi bi-code-slash"></i>
+                    <div class="icon-blur-container">
+                        <div class="skill-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
                     </div>
-                    <h4 class="skill-name">Python / Node.js Scripting</h4>
-                    <p class="skill-level">Competent Engineer - 50%</p>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 50%"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="skill-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <h4 class="skill-name">Python / Node.js Scripting</h4>
+                        <p class="skill-level">Competent Engineer - 50%</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 50%"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="skill-card" data-aos="fade-up" data-aos-delay="900">
-                    <div class="skill-icon">
-                        <i class="bi bi-robot"></i>
+                    <div class="icon-blur-container">
+                        <div class="skill-icon">
+                            <i class="bi bi-robot"></i>
+                        </div>
                     </div>
-                    <h4 class="skill-name">AI / LiteLLM / MCP</h4>
-                    <p class="skill-level">Experienced Engineer - 65%</p>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 65%"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="skill-icon">
+                            <i class="bi bi-robot"></i>
+                        </div>
+                        <h4 class="skill-name">AI / LiteLLM / MCP</h4>
+                        <p class="skill-level">Experienced Engineer - 65%</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 65%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1496,52 +1889,94 @@
             </div>
             <div class="cert-grid">
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="0">
-                    <div class="cert-icon">
-                        <i class="bi bi-cloud-check-fill"></i>
+                    <div class="icon-blur-container">
+                        <div class="cert-icon">
+                            <i class="bi bi-cloud-check-fill"></i>
+                        </div>
                     </div>
-                    <h4 class="cert-name">AWS Certified Solutions Architect - Associate</h4>
-                    <p class="cert-issuer">Amazon Web Services</p>
-                    <p class="cert-year">2023</p>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="cert-icon">
+                            <i class="bi bi-cloud-check-fill"></i>
+                        </div>
+                        <h4 class="cert-name">AWS Certified Solutions Architect - Associate</h4>
+                        <p class="cert-issuer">Amazon Web Services</p>
+                        <p class="cert-year">2023</p>
+                    </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="cert-icon">
-                        <i class="bi bi-diagram-3-fill"></i>
+                    <div class="icon-blur-container">
+                        <div class="cert-icon">
+                            <i class="bi bi-diagram-3-fill"></i>
+                        </div>
                     </div>
-                    <h4 class="cert-name">Certified Kubernetes Administrator (CKA)</h4>
-                    <p class="cert-issuer">Cloud Native Computing Foundation (CNCF)</p>
-                    <p class="cert-year">2022</p>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="cert-icon">
+                            <i class="bi bi-diagram-3-fill"></i>
+                        </div>
+                        <h4 class="cert-name">Certified Kubernetes Administrator (CKA)</h4>
+                        <p class="cert-issuer">Cloud Native Computing Foundation (CNCF)</p>
+                        <p class="cert-year">2022</p>
+                    </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="cert-icon">
-                        <i class="bi bi-shield-fill-check"></i>
+                    <div class="icon-blur-container">
+                        <div class="cert-icon">
+                            <i class="bi bi-shield-fill-check"></i>
+                        </div>
                     </div>
-                    <h4 class="cert-name">Certified Kubernetes Security Specialist (CKS)</h4>
-                    <p class="cert-issuer">Cloud Native Computing Foundation (CNCF)</p>
-                    <p class="cert-year">2022</p>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="cert-icon">
+                            <i class="bi bi-shield-fill-check"></i>
+                        </div>
+                        <h4 class="cert-name">Certified Kubernetes Security Specialist (CKS)</h4>
+                        <p class="cert-issuer">Cloud Native Computing Foundation (CNCF)</p>
+                        <p class="cert-year">2022</p>
+                    </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="cert-icon">
-                        <i class="bi bi-boxes"></i>
+                    <div class="icon-blur-container">
+                        <div class="cert-icon">
+                            <i class="bi bi-boxes"></i>
+                        </div>
                     </div>
-                    <h4 class="cert-name">Terraform Associate</h4>
-                    <p class="cert-issuer">HashiCorp</p>
-                    <p class="cert-year">2022</p>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="cert-icon">
+                            <i class="bi bi-boxes"></i>
+                        </div>
+                        <h4 class="cert-name">Terraform Associate</h4>
+                        <p class="cert-issuer">HashiCorp</p>
+                        <p class="cert-year">2022</p>
+                    </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="cert-icon">
-                        <i class="bi bi-arrow-repeat"></i>
+                    <div class="icon-blur-container">
+                        <div class="cert-icon">
+                            <i class="bi bi-arrow-repeat"></i>
+                        </div>
                     </div>
-                    <h4 class="cert-name">Harness Certified Developer - CI/CD</h4>
-                    <p class="cert-issuer">Harness</p>
-                    <p class="cert-year">2023</p>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="cert-icon">
+                            <i class="bi bi-arrow-repeat"></i>
+                        </div>
+                        <h4 class="cert-name">Harness Certified Developer - CI/CD</h4>
+                        <p class="cert-issuer">Harness</p>
+                        <p class="cert-year">2023</p>
+                    </div>
                 </div>
                 <div class="cert-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="cert-icon">
-                        <i class="bi bi-mortarboard-fill"></i>
+                    <div class="icon-blur-container">
+                        <div class="cert-icon">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
                     </div>
-                    <h4 class="cert-name">Bachelor of Computer Science</h4>
-                    <p class="cert-issuer">Ton Duc Thang University</p>
-                    <p class="cert-year">2011 - 2017</p>
+                    <div style="position: relative; z-index: 1;">
+                        <div class="cert-icon">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                        <h4 class="cert-name">Bachelor of Computer Science</h4>
+                        <p class="cert-issuer">Ton Duc Thang University</p>
+                        <p class="cert-year">2011 - 2017</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1591,10 +2026,12 @@
                                 </div>
                             </div>
                             <div class="social-links">
-                                <a href="https://github.com/dinhdobathi1992" class="social-link" target="_blank" rel="noopener noreferrer">
+                                <a href="https://github.com/dinhdobathi1992" class="social-link" target="_blank"
+                                    rel="noopener noreferrer">
                                     <i class="bi bi-github"></i>
                                 </a>
-                                <a href="https://www.linkedin.com/in/dinhdobathi" class="social-link" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.linkedin.com/in/dinhdobathi" class="social-link" target="_blank"
+                                    rel="noopener noreferrer">
                                     <i class="bi bi-linkedin"></i>
                                 </a>
                             </div>
@@ -1606,25 +2043,29 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="name">Your Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="John Doe" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="email">Your Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="john@example.com" required>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="john@example.com" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="subject">Subject</label>
-                                        <input type="text" class="form-control" id="subject" name="subject" placeholder="How can I help you?" required>
+                                        <input type="text" class="form-control" id="subject" name="subject"
+                                            placeholder="How can I help you?" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="message">Message</label>
-                                        <textarea class="form-control" id="message" name="message" placeholder="Your message..." required></textarea>
+                                        <textarea class="form-control" id="message" name="message"
+                                            placeholder="Your message..." required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -1670,7 +2111,7 @@
         });
 
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
@@ -1716,7 +2157,7 @@
                         behavior: 'smooth'
                     });
                 }
-                
+
                 // Close mobile menu if open
                 const navbarCollapse = document.querySelector('.navbar-collapse');
                 if (navbarCollapse.classList.contains('show')) {
@@ -1750,7 +2191,7 @@
         // Form submission handling (basic client-side validation)
         const contactForm = document.querySelector('.contact-form');
         if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
+            contactForm.addEventListener('submit', function (e) {
                 // Form will be handled by contact.php
                 // Add any additional client-side validation here if needed
             });
@@ -1847,8 +2288,45 @@
                 retina_detect: true
             });
         }
+
+        // Interactive Card Pointer Tracking (From CodePen)
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.highlight-card, .skill-card, .cert-card');
+
+            if (cards.length === 0) {
+                console.warn('No interactive cards found');
+                return;
+            }
+
+            cards.forEach((card) => {
+                card.addEventListener('pointermove', (event) => {
+                    const rect = card.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const relativeX = event.clientX - centerX;
+                    const relativeY = event.clientY - centerY;
+                    const x = relativeX / (rect.width / 2);
+                    const y = relativeY / (rect.height / 2);
+                    card.style.setProperty('--pointer-x', x.toFixed(3));
+                    card.style.setProperty('--pointer-y', y.toFixed(3));
+                });
+
+                card.addEventListener('pointerleave', () => {
+                    card.style.setProperty('--pointer-x', '0');
+                    card.style.setProperty('--pointer-y', '0');
+                });
+            });
+
+            console.log(`Initialized pointer tracking for ${highlightCards.length} cards`);
+        });
     </script>
+    <!-- SVG Filter for Blur Effect -->
+    <svg class="sr-only" style="position: absolute; width: 0; height: 0; overflow: hidden;"
+        xmlns="http://www.w3.org/2000/svg">
+        <filter id="blur" width="500%" height="500%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="28" />
+        </filter>
+    </svg>
 </body>
 
 </html>
-
