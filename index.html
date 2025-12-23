@@ -1070,7 +1070,8 @@
             background: var(--dark-tertiary);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            color: var(--text-primary);
+            color: #ffffff !important;
+            caret-color: #ffffff;
             font-family: 'Inter', sans-serif;
             transition: all 0.3s ease;
         }
@@ -1079,10 +1080,11 @@
             outline: none;
             border-color: var(--primary-color);
             background: var(--dark-bg);
+            color: #ffffff !important;
         }
 
         .form-control::placeholder {
-            color: var(--text-muted);
+            color: rgba(255, 255, 255, 0.5) !important;
         }
 
         textarea.form-control {
@@ -2189,11 +2191,55 @@
         }
 
         // Form submission handling (basic client-side validation)
+        // Form submission handling (Real Email)
         const contactForm = document.querySelector('.contact-form');
         if (contactForm) {
-            contactForm.addEventListener('submit', function (e) {
-                // Form will be handled by contact.php
-                // Add any additional client-side validation here if needed
+            contactForm.addEventListener('submit', async function (e) {
+                e.preventDefault(); // Prevent default submission
+
+                const submitBtn = contactForm.querySelector('.btn-submit');
+                const originalBtnText = submitBtn.innerHTML;
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Sending...';
+
+                // Form submission handling (Google Sheets)
+                // IMPORTANT: You must create a Google Apps Script and deploy it as a Web App.
+                // Then, replace the URL below with your script's executable URL ('.../exec').
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbxXV_NiXgX8afWuFRIQhok4yOcWiVhJZSwN01PfgyTryZweP75Bo5Dl3S7zZgE0uc07/exec';
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(contactForm) })
+                    .then(response => {
+                        // Show success state
+                        submitBtn.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>Sent!';
+                        submitBtn.classList.add('btn-success');
+
+                        alert('Thank you! Your message has been sent successfully to the sheet.');
+
+                        // Reset form
+                        contactForm.reset();
+
+                        // Reset button
+                        setTimeout(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.classList.remove('btn-success');
+                        }, 3000);
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        alert('Error submitting to Google Sheet. Please check your script URL and permissions.');
+
+                        submitBtn.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-2"></i>Error';
+                        submitBtn.classList.add('btn-danger'); // Use predefined danger class if available
+
+                        setTimeout(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.classList.remove('btn-danger');
+                        }, 3000);
+                    });
             });
         }
 
