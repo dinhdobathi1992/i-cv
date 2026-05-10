@@ -1,16 +1,13 @@
 /**
- * ChatGPT Assistant Integration - Vercel Version
- * Uses Vercel serverless functions to securely call OpenAI API
+ * Gemini AI Assistant Integration
+ * Simple request/response chat with CV knowledge base
  */
 
 class ChatAssistant {
     constructor(config) {
         this.apiEndpoint = config.apiEndpoint || '/api/chat';
-        this.assistantId = config.assistantId || '';
-        this.threadId = null;
         this.isOpen = false;
         this.messages = [];
-        
         this.init();
     }
 
@@ -22,14 +19,10 @@ class ChatAssistant {
 
     createChatUI() {
         const chatHTML = `
-            <!-- Chat FAB Button -->
             <button class="chat-fab-button" id="chatFabButton">
                 <i class="bi bi-chat-dots-fill"></i>
             </button>
-
-            <!-- Chat Slide Container -->
             <div class="chat-slide-container" id="chatSlideContainer">
-                <!-- Chat Header -->
                 <div class="chat-slide-header">
                     <div class="chat-header-info">
                         <div class="chat-avatar">
@@ -37,15 +30,13 @@ class ChatAssistant {
                         </div>
                         <div class="chat-header-text">
                             <h3>Thi's Assistant</h3>
-                            <p>Active now</p>
+                            <p>Powered by Gemini</p>
                         </div>
                     </div>
                     <button class="chat-close-btn" id="chatCloseBtn">
                         <i class="bi bi-x-lg"></i>
                     </button>
                 </div>
-
-                <!-- Chat Messages -->
                 <div class="chat-slide-messages" id="chatMessages">
                     <div class="chat-welcome">
                         <div class="chat-welcome-icon">
@@ -63,19 +54,17 @@ class ChatAssistant {
                             <div class="chat-suggestion-chip" data-question="What certifications does Thi have?">
                                 🎓 Certifications
                             </div>
-                            <div class="chat-suggestion-chip" data-question="Tell me about Thi's AWS experience">
-                                ☁️ AWS Projects
+                            <div class="chat-suggestion-chip" data-question="Tell me about Thi's AI and automation work">
+                                🤖 AI Projects
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Chat Input -->
                 <div class="chat-slide-input">
                     <div class="chat-input-wrapper">
-                        <textarea 
-                            class="chat-input-field" 
-                            id="chatInputField" 
+                        <textarea
+                            class="chat-input-field"
+                            id="chatInputField"
                             placeholder="Ask me anything about Thi..."
                             rows="1"
                         ></textarea>
@@ -86,7 +75,6 @@ class ChatAssistant {
                 </div>
             </div>
         `;
-
         document.body.insertAdjacentHTML('beforeend', chatHTML);
     }
 
@@ -100,7 +88,7 @@ class ChatAssistant {
         fabButton.addEventListener('click', () => this.toggleChat());
         closeBtn.addEventListener('click', () => this.toggleChat());
         sendBtn.addEventListener('click', () => this.sendMessage());
-        
+
         inputField.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -115,8 +103,7 @@ class ChatAssistant {
 
         suggestions.forEach(chip => {
             chip.addEventListener('click', () => {
-                const question = chip.getAttribute('data-question');
-                inputField.value = question;
+                inputField.value = chip.getAttribute('data-question');
                 this.sendMessage();
             });
         });
@@ -125,42 +112,14 @@ class ChatAssistant {
     toggleChat() {
         const container = document.getElementById('chatSlideContainer');
         const fabButton = document.getElementById('chatFabButton');
-        
         this.isOpen = !this.isOpen;
         container.classList.toggle('active');
         fabButton.classList.toggle('active');
-
-        if (this.isOpen && !this.threadId) {
-            this.createThread();
-        }
-    }
-
-    async createThread() {
-        try {
-            const response = await fetch(this.apiEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    action: 'createThread'
-                })
-            });
-
-            const data = await response.json();
-            this.threadId = data.id;
-            this.saveToLocalStorage();
-            console.log('Thread created:', this.threadId);
-        } catch (error) {
-            console.error('Error creating thread:', error);
-            this.showError('Failed to initialize chat. Please try again.');
-        }
     }
 
     async sendMessage() {
         const inputField = document.getElementById('chatInputField');
         const message = inputField.value.trim();
-
         if (!message) return;
 
         inputField.value = '';
@@ -170,43 +129,25 @@ class ChatAssistant {
         this.showTypingIndicator();
 
         try {
-            if (!this.threadId) {
-                await this.createThread();
-            }
-
-            // Add message to thread
-            await fetch(this.apiEndpoint, {
+            const response = await fetch(this.apiEndpoint, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    action: 'addMessage',
-                    threadId: this.threadId,
-                    message: message
+                    message,
+                    history: this.messages.slice(-10)
                 })
             });
 
-            // Run assistant
-            const runResponse = await fetch(this.apiEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    action: 'runAssistant',
-                    threadId: this.threadId,
-                    assistantId: this.assistantId
-                })
-            });
-
-            const run = await runResponse.json();
-
-            // Poll for completion
-            const assistantResponse = await this.pollRunStatus(run.id);
+            const data = await response.json();
 
             this.hideTypingIndicator();
-            await this.addMessageWithStreamingEffect('assistant', assistantResponse);
+
+            if (data.error) {
+                this.showError(data.error);
+                return;
+            }
+
+            await this.addMessageWithStreamingEffect('assistant', data.reply);
             this.saveToLocalStorage();
 
         } catch (error) {
@@ -216,59 +157,10 @@ class ChatAssistant {
         }
     }
 
-    async pollRunStatus(runId, maxAttempts = 60) {
-        for (let i = 0; i < maxAttempts; i++) {
-            const response = await fetch(this.apiEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    action: 'checkRunStatus',
-                    threadId: this.threadId,
-                    runId: runId
-                })
-            });
-
-            const run = await response.json();
-
-            if (run.status === 'completed') {
-                // Get messages
-                const messagesResponse = await fetch(this.apiEndpoint, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        action: 'getMessages',
-                        threadId: this.threadId
-                    })
-                });
-
-                const messages = await messagesResponse.json();
-                
-                if (messages.data && messages.data[0]) {
-                    const assistantMessage = messages.data[0];
-                    if (assistantMessage.content && assistantMessage.content[0]) {
-                        return assistantMessage.content[0].text.value;
-                    }
-                }
-
-                return 'I apologize, but I could not generate a response. Please try again.';
-            } else if (run.status === 'failed' || run.status === 'cancelled' || run.status === 'expired') {
-                throw new Error(`Run ${run.status}`);
-            }
-
-            await new Promise(resolve => setTimeout(resolve, 500));
-        }
-
-        throw new Error('Run timeout');
-    }
-
     addMessageToUI(role, content) {
         const messagesContainer = document.getElementById('chatMessages');
         const welcomeMessage = messagesContainer.querySelector('.chat-welcome');
-        
+
         if (welcomeMessage && this.messages.length === 0) {
             welcomeMessage.remove();
         }
@@ -285,24 +177,21 @@ class ChatAssistant {
 
         const messageTime = document.createElement('span');
         messageTime.className = 'chat-message-time';
-        messageTime.textContent = new Date().toLocaleTimeString([], { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        });
+        messageTime.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         messageBubble.appendChild(messageText);
         messageBubble.appendChild(messageTime);
         messageWrapper.appendChild(messageBubble);
         messagesContainer.appendChild(messageWrapper);
-
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
         this.messages.push({ role, content, timestamp: Date.now() });
     }
 
     async addMessageWithStreamingEffect(role, content) {
         const messagesContainer = document.getElementById('chatMessages');
         const welcomeMessage = messagesContainer.querySelector('.chat-welcome');
-        
+
         if (welcomeMessage && this.messages.length === 0) {
             welcomeMessage.remove();
         }
@@ -319,10 +208,7 @@ class ChatAssistant {
 
         const messageTime = document.createElement('span');
         messageTime.className = 'chat-message-time';
-        messageTime.textContent = new Date().toLocaleTimeString([], { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        });
+        messageTime.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         messageBubble.appendChild(messageText);
         messageBubble.appendChild(messageTime);
@@ -331,7 +217,7 @@ class ChatAssistant {
 
         const words = content.split(' ');
         let currentText = '';
-        
+
         for (let i = 0; i < words.length; i++) {
             currentText += (i > 0 ? ' ' : '') + words[i];
             messageText.textContent = currentText;
@@ -360,9 +246,7 @@ class ChatAssistant {
 
     hideTypingIndicator() {
         const typingIndicator = document.getElementById('typingIndicator');
-        if (typingIndicator) {
-            typingIndicator.remove();
-        }
+        if (typingIndicator) typingIndicator.remove();
     }
 
     showError(message) {
@@ -372,19 +256,14 @@ class ChatAssistant {
         errorDiv.textContent = message;
         messagesContainer.appendChild(errorDiv);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-        setTimeout(() => {
-            errorDiv.remove();
-        }, 5000);
+        setTimeout(() => errorDiv.remove(), 5000);
     }
 
     saveToLocalStorage() {
-        const data = {
-            threadId: this.threadId,
+        localStorage.setItem('chatAssistantData', JSON.stringify({
             messages: this.messages,
             timestamp: Date.now()
-        };
-        localStorage.setItem('chatAssistantData', JSON.stringify(data));
+        }));
     }
 
     loadFromLocalStorage() {
@@ -392,14 +271,9 @@ class ChatAssistant {
         if (data) {
             try {
                 const parsed = JSON.parse(data);
-                const hoursSinceLastChat = (Date.now() - parsed.timestamp) / (1000 * 60 * 60);
-                
-                if (hoursSinceLastChat < 24) {
-                    this.threadId = parsed.threadId;
+                if ((Date.now() - parsed.timestamp) / (1000 * 60 * 60) < 24) {
                     this.messages = parsed.messages || [];
-                    this.messages.forEach(msg => {
-                        this.addMessageToUI(msg.role, msg.content);
-                    });
+                    this.messages.forEach(msg => this.addMessageToUI(msg.role, msg.content));
                 } else {
                     localStorage.removeItem('chatAssistantData');
                 }
@@ -410,14 +284,8 @@ class ChatAssistant {
     }
 }
 
-// Initialize chat when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const chatConfig = {
-        apiEndpoint: '/api/chat',
-        assistantId: 'asst_REAi8hkVfcsG4pAHmFQO1Tgb'
-    };
-
-    window.chatAssistant = new ChatAssistant(chatConfig);
-    console.log('Chat Assistant initialized with Vercel!');
+    window.chatAssistant = new ChatAssistant({
+        apiEndpoint: '/api/chat'
+    });
 });
-

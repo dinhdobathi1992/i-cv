@@ -22,3 +22,6 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Claude Code local backend config (contains credentials)
+.claude/settings.local.json

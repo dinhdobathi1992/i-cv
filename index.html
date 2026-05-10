@@ -223,13 +223,13 @@
            HERO SECTION
         ======================================== */
         .hero-section {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            padding-top: 80px;
+            padding: 100px 0 60px;
         }
 
         .hero-background {
@@ -858,44 +858,124 @@
         /* ========================================
            EXPERIENCE SECTION
         ======================================== */
+        #experience .container {
+            max-width: 100%;
+            padding: 0 2rem;
+        }
+
         .experience-timeline {
             position: relative;
-            max-width: 900px;
-            margin: 0 auto;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1.5rem;
+            padding: 3rem 0 2rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) transparent;
+        }
+
+        .experience-timeline::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .experience-timeline::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .experience-timeline::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 3px;
         }
 
         .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: var(--border-color);
+            display: none;
         }
 
         .timeline-item {
-            margin-bottom: 3rem;
+            flex: 1 0 0;
+            min-width: 280px;
+            scroll-snap-align: start;
             position: relative;
+            padding-top: 2.5rem;
         }
 
-        .timeline-item:nth-child(odd) {
-            padding-right: 50%;
-            padding-left: 0;
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.4;
         }
 
-        .timeline-item:nth-child(even) {
-            padding-left: 50%;
-            padding-right: 0;
+        .timeline-item:first-child::before {
+            left: 2rem;
+            width: calc(100% - 2rem);
+        }
+
+        .timeline-item:last-child::before {
+            width: calc(2rem + 10px);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 0.35rem;
+            left: 2rem;
+            width: 14px;
+            height: 14px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            border: 3px solid var(--dark-bg);
+            z-index: 2;
+            box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
+        }
+
+        .timeline-item:first-child .timeline-marker {
+            width: 20px;
+            height: 20px;
+            top: 0.15rem;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.8), 0 0 24px rgba(37, 99, 235, 0.4);
+        }
+
+        .timeline-item:first-child .timeline-marker::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 99, 235, 0.3);
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+
+        .timeline-item:nth-child(2) .timeline-marker {
+            width: 16px;
+            height: 16px;
+            top: 0.25rem;
+        }
+
+        .timeline-item:nth-last-child(-n+2) .timeline-marker {
+            width: 10px;
+            height: 10px;
+            top: 0.5rem;
+            opacity: 0.7;
         }
 
         .timeline-content {
             background: var(--card-bg);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
-            position: relative;
+            height: 100%;
         }
 
         .timeline-content:hover {
@@ -904,53 +984,43 @@
             border-color: var(--primary-color);
         }
 
-        .timeline-marker {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            border: 4px solid var(--dark-bg);
-            top: 2rem;
-        }
-
         .timeline-date {
             display: inline-block;
             background: rgba(37, 99, 235, 0.1);
             color: var(--primary-color);
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 50px;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .timeline-title {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .timeline-company {
             color: var(--primary-color);
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
         }
 
         .timeline-description {
             color: var(--text-secondary);
-            line-height: 1.8;
+            line-height: 1.5;
+            font-size: 0.85rem;
         }
 
         .timeline-description ul {
-            padding-left: 1.5rem;
-            margin-top: 1rem;
+            padding-left: 1.2rem;
+            margin-top: 0.4rem;
         }
 
         .timeline-description li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         /* ========================================
@@ -1199,18 +1269,9 @@
                 font-size: 3rem;
             }
 
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                padding-left: 2rem;
-                padding-right: 0;
-            }
-
-            .experience-timeline::before {
-                left: 0;
-            }
-
-            .timeline-marker {
-                left: 0;
+            .timeline-item {
+                min-width: 280px;
+                flex: 0 0 auto;
             }
         }
 
@@ -1644,15 +1705,13 @@
                         <p class="timeline-company">GFG Group - HCMC, Vietnam</p>
                         <div class="timeline-description">
                             <ul>
-                                <li>Managed cloud-based infrastructure utilizing AWS & Azure, enhancing workflow
-                                    orchestration for application deployment</li>
-                                <li>Migrated CI/CD pipelines from legacy systems to GitHub Actions, improving efficiency
-                                </li>
-                                <li>Oversaw AI platforms and tools, ensuring operational support for business processes
-                                </li>
-                                <li>Designed and implemented monitoring solutions to ensure system reliability and
-                                    performance</li>
-                                <li>Coached junior engineers in best practices for cloud infrastructure</li>
+                                <li>Spearheaded AI adoption across the organization — drove LiteLLM, n8n, Langfuse, and Onyx from POC to production, enabling business-wide AI integration</li>
+                                <li>Deployed LiteLLM as unified AI gateway backend, providing single API and auth layer across multiple AI providers (OpenAI, Anthropic, Azure), reducing vendor lock-in</li>
+                                <li>Pioneered n8n from scratch POC to enterprise-licensed production — built automation workflows that cut Dependabot alert handling time by 50% for the dev team</li>
+                                <li>Integrated Langfuse with LiteLLM for prompt analytics, LLM scoring, usage tracking, and cost optimization — enabling data-driven AI operations</li>
+                                <li>Collaborated with dev team to build Onyx, an enterprise chat UI ensuring data privacy and security vs public ChatGPT</li>
+                                <li>Managed cloud infrastructure on AWS & Azure, migrated CI/CD pipelines from legacy systems to GitHub Actions</li>
+                                <li>Designed monitoring solutions and coached junior engineers in cloud infrastructure best practices</li>
                             </ul>
                         </div>
                     </div>
