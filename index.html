@@ -1262,6 +1262,412 @@
         }
 
         /* ========================================
+           PERSONAL PROJECTS SECTION
+        ======================================== */
+        .proj-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .proj-pill {
+            min-height: 44px;
+            padding: 0 1.25rem;
+            border-radius: 50px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+        }
+
+        .proj-pill:hover {
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        .proj-pill[aria-pressed="true"] {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .proj-pill:focus-visible,
+        .proj-link:focus-visible,
+        .proj-btn:focus-visible,
+        .proj-more:focus-visible {
+            outline: 2px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        .proj-card {
+            background: #111827;
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            border-radius: 16px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .proj-card:hover {
+            border-color: rgba(59, 130, 246, 0.55);
+            transform: translateY(-4px);
+        }
+
+        .proj-card[hidden] {
+            display: none;
+        }
+
+        .proj-featured {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 3rem;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-color: rgba(59, 130, 246, 0.35);
+            margin-bottom: 1.5rem;
+        }
+
+        .proj-featured-body {
+            display: flex;
+            flex-direction: column;
+            gap: 1.125rem;
+        }
+
+        .proj-featured-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .proj-featured-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            background: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            font-size: 0.8125rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .proj-path {
+            font-family: var(--font-code);
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            overflow-wrap: anywhere;
+        }
+
+        .proj-featured h3 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .proj-featured p,
+        .proj-points {
+            margin: 0;
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .proj-points {
+            padding-left: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .proj-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .proj-tags li {
+            padding: 0.1875rem 0.625rem;
+            border-radius: 6px;
+            background: rgba(148, 163, 184, 0.1);
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .proj-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-height: 44px;
+            padding: 0 1.25rem;
+            border-radius: 10px;
+            background: #2563eb;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            text-decoration: none;
+            transition: background 0.15s ease;
+        }
+
+        .proj-btn:hover {
+            background: #1d4ed8;
+            color: #ffffff;
+        }
+
+        .proj-featured-reverse .proj-featured-body {
+            order: 2;
+        }
+
+        .proj-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem 1.25rem;
+        }
+
+        .proj-btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        .proj-btn-ghost:hover {
+            background: rgba(59, 130, 246, 0.12);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        .proj-window {
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            border-radius: 14px;
+            background: var(--dark-bg);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .proj-window-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .proj-window-bar span {
+            flex-shrink: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--dark-tertiary);
+        }
+
+        .proj-window-bar span:last-of-type {
+            margin-right: 0.5rem;
+        }
+
+        .proj-window img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .proj-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .proj-grid .proj-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+            padding: 1.75rem;
+        }
+
+        .proj-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .proj-status {
+            flex-shrink: 0;
+            padding: 0.1875rem 0.625rem;
+            border-radius: 50px;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .proj-grid h3 {
+            margin: 0;
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .proj-grid p {
+            margin: 0;
+            flex-grow: 1;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .proj-card-foot {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            column-gap: 1.25rem;
+            min-height: 44px;
+            padding-top: 0.875rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            font-size: 0.875rem;
+        }
+
+        .proj-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            min-height: 44px;
+            font-weight: 600;
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        .proj-link:hover {
+            color: #bfdbfe;
+        }
+
+        .proj-private {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            gap: 0.375rem;
+            color: var(--text-muted);
+        }
+
+        .proj-more {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            min-height: 240px;
+            padding: 1.75rem;
+            border-radius: 16px;
+            border: 1px dashed rgba(148, 163, 184, 0.3);
+            color: var(--text-secondary);
+            text-align: center;
+            text-decoration: none;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .proj-more:hover {
+            border-color: rgba(59, 130, 246, 0.55);
+            transform: translateY(-4px);
+            color: var(--text-secondary);
+        }
+
+        .proj-more strong {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .proj-more span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-family: var(--font-code);
+            font-size: 0.8125rem;
+            color: #93c5fd;
+        }
+
+        @media (max-width: 1199px) {
+            .proj-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .proj-featured {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .proj-featured-reverse .proj-featured-body {
+                order: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .proj-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .proj-filters {
+                gap: 0.5rem;
+                margin-bottom: 1.75rem;
+            }
+
+            .proj-pill {
+                padding: 0 1rem;
+                font-size: 0.875rem;
+            }
+
+            .proj-featured {
+                padding: 1.5rem;
+                border-radius: 18px;
+            }
+
+            .proj-featured h3 {
+                font-size: 1.625rem;
+            }
+
+            .proj-featured p {
+                font-size: 1rem;
+            }
+
+            .proj-points {
+                font-size: 0.9375rem;
+            }
+
+            .proj-btn {
+                justify-content: center;
+                min-height: 48px;
+            }
+
+            .proj-actions .proj-btn {
+                flex: 1 1 100%;
+            }
+
+            .proj-grid .proj-card {
+                padding: 1.375rem;
+            }
+
+            .proj-grid h3 {
+                font-size: 1.3125rem;
+            }
+        }
+
+        /* ========================================
            RESPONSIVE DESIGN
         ======================================== */
         @media (max-width: 992px) {
@@ -1389,7 +1795,7 @@
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#highlights">Highlights</a>
+                        <a class="nav-link" href="#projects">Projects</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#skills">Skills</a>
@@ -1398,14 +1804,17 @@
                         <a class="nav-link" href="#experience">Experience</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#highlights">Highlights</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#certifications">Certifications</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                     <li class="nav-item ms-lg-2">
-                        <a href="https://dinhdobathi5gmail-my.sharepoint.com/:b:/g/personal/info_dinhdobathi_com/EaQyfPMwfJlNhFKAFKlV0oMBKdl9jzYrEEiVOT4hAxl1pQ?e=sRWfo2"
-                            class="btn-download-cv" target="_blank" rel="noopener noreferrer">
+                        <a href="assets/files/Dinh-Do-Ba-Thi-CV.pdf" download="Dinh-Do-Ba-Thi-CV.pdf"
+                            class="btn-download-cv">
                             <i class="bi bi-download me-2"></i>Download CV
                         </a>
                     </li>
@@ -1521,6 +1930,372 @@
                                 <span class="about-info-value">dinhdobathi.com</span>
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PERSONAL PROJECTS SECTION
+    ======================================== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span class="section-badge">Side Projects</span>
+                <h2 class="section-heading">Personal Projects</h2>
+                <p class="section-description">
+                    Tools I build outside work — mostly AI tooling, automation and the glue that keeps infrastructure honest.
+                </p>
+            </div>
+
+            <div class="proj-filters" role="group" aria-label="Filter projects" data-aos="fade-up">
+                <button type="button" class="proj-pill" data-filter="all" aria-pressed="true">All</button>
+                <button type="button" class="proj-pill" data-filter="ai" aria-pressed="false">AI &amp; MCP</button>
+                <button type="button" class="proj-pill" data-filter="devops" aria-pressed="false">DevOps &amp; CI</button>
+                <button type="button" class="proj-pill" data-filter="web" aria-pressed="false">Web Apps</button>
+            </div>
+
+            <article class="proj-card proj-featured" data-category="devops web" data-aos="fade-up">
+                <div class="proj-featured-body">
+                    <div class="proj-featured-meta">
+                        <span class="proj-featured-badge">Featured</span>
+                        <span class="proj-path">~/gitdash</span>
+                    </div>
+                    <h3>GitDash</h3>
+                    <p>Self-hosted GitHub Actions metrics dashboard. Connect a personal token or a GitHub organization and get the delivery metrics GitHub itself doesn’t show.</p>
+                    <ul class="proj-points">
+                        <li>DORA metrics derived from real PR and release data</li>
+                        <li>Workflow analytics: success rate, queue wait, duration trends</li>
+                        <li>Actions cost tracking by workflow, with CSV / JSON export</li>
+                        <li>Alert rules delivered to email, daily digest or Slack</li>
+                        <li>AES-256-GCM encrypted sessions — no tokens in the browser</li>
+                    </ul>
+                    <ul class="proj-tags" aria-label="Technologies">
+                        <li>Next.js</li>
+                        <li>React</li>
+                        <li>TypeScript</li>
+                        <li>Neon Postgres</li>
+                        <li>Docker</li>
+                        <li>Helm</li>
+                    </ul>
+                    <div class="proj-actions">
+                        <a class="proj-btn" href="https://github.com/dinhdobathi1992/gitdash" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github" aria-hidden="true"></i>
+                            View code
+                        </a>
+                        <a class="proj-btn proj-btn-ghost" href="https://gitdash-psi.vercel.app" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                            Live demo
+                        </a>
+                    </div>
+                </div>
+
+                <figure class="proj-window m-0">
+                    <div class="proj-window-bar" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                        gitdash-psi.vercel.app
+                    </div>
+                    <img src="assets/img/projects/gitdash-dashboard.webp" width="1600" height="999" loading="lazy" decoding="async"
+                        alt="GitDash workflow overview: success rate, average duration, rolling success rate, duration trend and run frequency charts">
+                </figure>
+            </article>
+
+            <article class="proj-card proj-featured proj-featured-reverse" data-category="web" data-aos="fade-up">
+                <div class="proj-featured-body">
+                    <div class="proj-featured-meta">
+                        <span class="proj-featured-badge">Featured</span>
+                        <span class="proj-path">~/beauty.com</span>
+                        <span class="proj-status">Live</span>
+                    </div>
+                    <h3>Tinn Cosmetic — Beauty E-commerce</h3>
+                    <p>Full-stack Vietnamese cosmetics store running in production: storefront, admin portal and API on Cloudflare’s edge.</p>
+                    <ul class="proj-points">
+                        <li>VI / EN storefront with cart, COD and bank-transfer checkout, order tracking</li>
+                        <li>Admin portal for products, orders and reviews with owner / admin default-deny permissions and an audit log</li>
+                        <li>JWT and Google OAuth sign-in; rate-limited login and reviews</li>
+                        <li>AI shopping-assistant chat with pluggable LLM providers</li>
+                        <li>Cloudflare Pages, Workers, Hyperdrive and R2 over Neon Postgres — provisioned with Terraform, shipped by GitHub Actions</li>
+                    </ul>
+                    <ul class="proj-tags" aria-label="Technologies">
+                        <li>React</li>
+                        <li>TypeScript</li>
+                        <li>Tailwind</li>
+                        <li>Cloudflare Workers</li>
+                        <li>Neon Postgres</li>
+                        <li>Terraform</li>
+                    </ul>
+                    <div class="proj-actions">
+                        <a class="proj-btn" href="https://beauty.ddbt.info" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-bag" aria-hidden="true"></i>
+                            Visit store
+                        </a>
+                        <span class="proj-private"><i class="bi bi-lock" aria-hidden="true"></i> Private repo</span>
+                    </div>
+                </div>
+
+                <figure class="proj-window m-0">
+                    <div class="proj-window-bar" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                        beauty.ddbt.info
+                    </div>
+                    <img src="assets/img/projects/beauty-storefront.webp" width="1600" height="1000" loading="lazy" decoding="async"
+                        alt="Tinn Cosmetic storefront home page: “Authentic Beauty Products” hero with Shop now and Browse categories buttons">
+                </figure>
+            </article>
+
+            <div class="proj-grid">
+                <article class="proj-card" data-category="devops" data-aos="fade-up" data-aos-delay="0">
+                    <div class="proj-card-head">
+                        <span class="proj-path">~/n8n-webhook-gateway</span>
+                        <span class="proj-status">Active</span>
+                    </div>
+                    <h3>n8n Webhook Gateway</h3>
+                    <p>Sits in front of public n8n webhooks: verifies Slack and Google Chat signatures, encrypts secrets at rest, retries failures and logs every delivery.</p>
+                    <ul class="proj-tags" aria-label="Technologies">
+                        <li>Python</li>
+                        <li>Docker</li>
+                        <li>Kubernetes</li>
+                        <li>n8n</li>
+                    </ul>
+                    <div class="proj-card-foot">
+                        <a class="proj-link" href="https://github.com/dinhdobathi1992/n8n-webhook-gateway" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github" aria-hidden="true"></i>
+                            Code<span class="visually-hidden"> for n8n Webhook Gateway</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="proj-card" data-category="ai" data-aos="fade-up" data-aos-delay="100">
+                    <div class="proj-card-head">
+                        <span class="proj-path">~/MCPJungle</span>
+                        <span class="proj-status">Fork</span>
+                    </div>
+                    <h3>MCPJungle</h3>
+                    <p>Run all your MCP servers behind one endpoint — a single registry and proxy so every AI client sees one tool catalogue.</p>
+                    <ul class="proj-tags" aria-label="Technologies">
+                        <li>Go</li>
+                        <li>Docker</li>
+                        <li>MCP</li>
+                    </ul>
+                    <div class="proj-card-foot">
+                        <a class="proj-link" href="https://github.com/dinhdobathi1992/MCPJungle" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github" aria-hidden="true"></i>
+                            Code<span class="visually-hidden"> for MCPJungle</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="proj-card" data-category="ai" data-aos="fade-up" data-aos-delay="200">
+                    <div class="proj-card-head">
+                        <span class="proj-path">~/Bubbli</span>
+                        <span class="proj-status">Active</span>
+                    </div>
+                    <h3>Bubbli</h3>
+                    <p>Child-safe AI learning assistant API. Every message is safety-checked in both directions; flagged conversations go to a teacher review queue.</p>
+                    <ul class="proj-tags" aria-label="Technologies">
+                        <li>FastAPI</li>
+                        <li>PostgreSQL</li>
+                        <li>AWS Bedrock</li>
+                        <li>Docker</li>
+                    </ul>
+                    <div class="proj-card-foot">
+                        <a class="proj-link" href="https://github.com/dinhdobathi1992/Bubbli" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github" aria-hidden="true"></i>
+                            Code<span class="visually-hidden"> for Bubbli</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="proj-card" data-category="devops web" data-aos="fade-up" data-aos-delay="0">
+                    <div class="proj-card-head">
+                        <span class="proj-path">~/aws-secret-manager-web-service</span>
+                        <span class="proj-status">Active</span>
+                    </div>
+                    <h3>AWS Secrets Manager Web</h3>
+                    <p>Web UI for AWS Secrets Manager across multiple accounts, with Azure AD sign-in and reader / writer roles.</p>
+                    <ul class="proj-tags" aria-label="Technologies">
+                        <li>Python</li>
+                        <li>Flask</li>
+                        <li>Azure AD</li>
+                        <li>Docker</li>
+                    </ul>
+                    <div class="proj-card-foot">
+                        <a class="proj-link" href="https://github.com/dinhdobathi1992/aws-secret-manager-web-service" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github" aria-hidden="true"></i>
+                            Code<span class="visually-hidden"> for AWS Secrets Manager Web</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="proj-card" data-category="devops" data-aos="fade-up" data-aos-delay="100">
+                    <div class="proj-card-head">
+                        <span class="proj-path">~/github-status-updater</span>
+                        <span class="proj-status">Fork</span>
+                    </div>
+                    <h3>GitHub Status Updater</h3>
+                    <p>Go CLI that sets GitHub commit statuses and required status checks from any CI pipeline. Based on cloudposse’s tool.</p>
+                    <ul class="proj-tags" aria-label="Technologies">
+                        <li>Go</li>
+                        <li>Docker</li>
+                        <li>GitHub API</li>
+                    </ul>
+                    <div class="proj-card-foot">
+                        <a class="proj-link" href="https://github.com/dinhdobathi1992/github-status-updater" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-github" aria-hidden="true"></i>
+                            Code<span class="visually-hidden"> for GitHub Status Updater</span>
+                        </a>
+                    </div>
+                </article>
+
+                <a class="proj-more" href="https://github.com/dinhdobathi1992" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="200">
+                    <i class="bi bi-github" style="font-size: 1.75rem;" aria-hidden="true"></i>
+                    <strong>More on GitHub</strong>
+                    <span>@dinhdobathi1992 <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         EXPERIENCE SECTION
+    ======================================== -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span class="section-badge">Career Journey</span>
+                <h2 class="section-heading">Professional Experience</h2>
+                <p class="section-description">
+                    9+ years of progressive experience across multiple industries
+                </p>
+            </div>
+            <div class="experience-timeline">
+                <!-- Timeline Item 1 - Current Position -->
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">January 2025 - Present</span>
+                        <h3 class="timeline-title">Senior Platform Engineer</h3>
+                        <p class="timeline-company">GFG Group - HCMC, Vietnam</p>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Spearheaded AI adoption across the organization — drove LiteLLM, n8n, Langfuse, and Onyx from POC to production, enabling business-wide AI integration</li>
+                                <li>Deployed LiteLLM as unified AI gateway backend, providing single API and auth layer across multiple AI providers (OpenAI, Anthropic, Azure), reducing vendor lock-in</li>
+                                <li>Pioneered n8n from scratch POC to enterprise-licensed production — built automation workflows that cut Dependabot alert handling time by 50% for the dev team</li>
+                                <li>Integrated Langfuse with LiteLLM for prompt analytics, LLM scoring, usage tracking, and cost optimization — enabling data-driven AI operations</li>
+                                <li>Collaborated with dev team to build Onyx, an enterprise chat UI ensuring data privacy and security vs public ChatGPT</li>
+                                <li>Managed cloud infrastructure on AWS & Azure, migrated CI/CD pipelines from legacy systems to GitHub Actions</li>
+                                <li>Designed monitoring solutions and coached junior engineers in cloud infrastructure best practices</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 - Previous Position at GFT -->
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023 - 2024</span>
+                        <h3 class="timeline-title">Senior DevOps Engineer</h3>
+                        <p class="timeline-company">GFT Group - HCMC, Vietnam</p>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Successfully transitioned CI Pipeline from Circle CI to Harness NextGen, improving
+                                    deployment efficiency</li>
+                                <li>Led migration of CD Pipeline from Harness FirstGen to NextGen for 40+ Kubernetes
+                                    clusters</li>
+                                <li>Managed and optimized 40+ K8s clusters and 10+ components using Terraform IaC</li>
+                                <li>Implemented Karpenter for auto-scaling, achieving 30% EC2 cost reduction</li>
+                                <li>Maintained Helm charts for microservices and provided comprehensive pipeline support
+                                </li>
+                                <li>Continuously enhanced infrastructure to meet security requirements and ensure
+                                    consistency</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022 - 2023</span>
+                        <h3 class="timeline-title">DevOps Engineer</h3>
+                        <p class="timeline-company">Manabie Vietnam - HCMC, Vietnam</p>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Restructured Helm Chart architecture and developed shared template library for
+                                    subcharts</li>
+                                <li>Achieved 30% reduction in pipeline runtime through optimization initiatives</li>
+                                <li>Led incident response efforts, minimizing service downtime to less than 4 hours</li>
+                                <li>Implemented GitHub Actions pipelines and local deployment tools</li>
+                                <li>Provided hands-on troubleshooting during service interruptions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 - 2022</span>
+                        <h3 class="timeline-title">DevOps Engineer & System Administrator</h3>
+                        <p class="timeline-company">Dai-ichi Life Vietnam - HCMC, Vietnam</p>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Implemented DevOps principles to enhance application deployment processes</li>
+                                <li>Managed CI/CD tools including Docker and Jenkins for seamless SCM to production
+                                    deployments</li>
+                                <li>Automated MSSQL database deployments using Redgate Source Control</li>
+                                <li>Utilized Ansible and Ansible Tower for automation and software deployments</li>
+                                <li>Monitored server health, performance metrics, and audit logs</li>
+                                <li>Contributed to research and deployment of new infrastructure projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2017 - 2020</span>
+                        <h3 class="timeline-title">Senior IT System & Network Administrator</h3>
+                        <p class="timeline-company">SGH Asia Ltd - HCMC, Vietnam</p>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Managed infrastructure for 150+ end users including servers, networks, and
+                                    workstations</li>
+                                <li>Ensured seamless operation of all infrastructure components across the organization
+                                </li>
+                                <li>Led technical upgrades for firewall, VMware, and server infrastructure</li>
+                                <li>Implemented ISO-27001 framework and Disaster Recovery Plan</li>
+                                <li>Administered ITSM software solution for incident and change management</li>
+                                <li>Conducted daily system audits and proactive security patching</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 6 -->
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2015 - 2017</span>
+                        <h3 class="timeline-title">System Administrator</h3>
+                        <p class="timeline-company">Vien Tin Vinh Solution Ltd - HCMC, Vietnam</p>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Performed comprehensive system administration for IT infrastructure</li>
+                                <li>Managed Windows, Linux, Backup/Restore, LAN/WAN/VPN, VMware, and AD/DNS</li>
+                                <li>Led technical projects including VMWARE, UNIFI NETWORK, MERAKI NETWORK, NAS, and
+                                    CCTV</li>
+                                <li>Provided technical support to sales teams</li>
+                                <li>Managed servers, workstations, and network applications</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1682,150 +2457,6 @@
             </div>
         </div>
     </section><!-- End Career Highlights Section -->
-
-    <!-- ========================================
-         EXPERIENCE SECTION
-    ======================================== -->
-    <section id="experience" class="section">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <span class="section-badge">Career Journey</span>
-                <h2 class="section-heading">Professional Experience</h2>
-                <p class="section-description">
-                    9+ years of progressive experience across multiple industries
-                </p>
-            </div>
-            <div class="experience-timeline">
-                <!-- Timeline Item 1 - Current Position -->
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">January 2025 - Present</span>
-                        <h3 class="timeline-title">Senior Platform Engineer</h3>
-                        <p class="timeline-company">GFG Group - HCMC, Vietnam</p>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Spearheaded AI adoption across the organization — drove LiteLLM, n8n, Langfuse, and Onyx from POC to production, enabling business-wide AI integration</li>
-                                <li>Deployed LiteLLM as unified AI gateway backend, providing single API and auth layer across multiple AI providers (OpenAI, Anthropic, Azure), reducing vendor lock-in</li>
-                                <li>Pioneered n8n from scratch POC to enterprise-licensed production — built automation workflows that cut Dependabot alert handling time by 50% for the dev team</li>
-                                <li>Integrated Langfuse with LiteLLM for prompt analytics, LLM scoring, usage tracking, and cost optimization — enabling data-driven AI operations</li>
-                                <li>Collaborated with dev team to build Onyx, an enterprise chat UI ensuring data privacy and security vs public ChatGPT</li>
-                                <li>Managed cloud infrastructure on AWS & Azure, migrated CI/CD pipelines from legacy systems to GitHub Actions</li>
-                                <li>Designed monitoring solutions and coached junior engineers in cloud infrastructure best practices</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 2 - Previous Position at GFT -->
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2023 - 2024</span>
-                        <h3 class="timeline-title">Senior DevOps Engineer</h3>
-                        <p class="timeline-company">GFT Group - HCMC, Vietnam</p>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Successfully transitioned CI Pipeline from Circle CI to Harness NextGen, improving
-                                    deployment efficiency</li>
-                                <li>Led migration of CD Pipeline from Harness FirstGen to NextGen for 40+ Kubernetes
-                                    clusters</li>
-                                <li>Managed and optimized 40+ K8s clusters and 10+ components using Terraform IaC</li>
-                                <li>Implemented Karpenter for auto-scaling, achieving 30% EC2 cost reduction</li>
-                                <li>Maintained Helm charts for microservices and provided comprehensive pipeline support
-                                </li>
-                                <li>Continuously enhanced infrastructure to meet security requirements and ensure
-                                    consistency</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2022 - 2023</span>
-                        <h3 class="timeline-title">DevOps Engineer</h3>
-                        <p class="timeline-company">Manabie Vietnam - HCMC, Vietnam</p>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Restructured Helm Chart architecture and developed shared template library for
-                                    subcharts</li>
-                                <li>Achieved 30% reduction in pipeline runtime through optimization initiatives</li>
-                                <li>Led incident response efforts, minimizing service downtime to less than 4 hours</li>
-                                <li>Implemented GitHub Actions pipelines and local deployment tools</li>
-                                <li>Provided hands-on troubleshooting during service interruptions</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 4 -->
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2020 - 2022</span>
-                        <h3 class="timeline-title">DevOps Engineer & System Administrator</h3>
-                        <p class="timeline-company">Dai-ichi Life Vietnam - HCMC, Vietnam</p>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Implemented DevOps principles to enhance application deployment processes</li>
-                                <li>Managed CI/CD tools including Docker and Jenkins for seamless SCM to production
-                                    deployments</li>
-                                <li>Automated MSSQL database deployments using Redgate Source Control</li>
-                                <li>Utilized Ansible and Ansible Tower for automation and software deployments</li>
-                                <li>Monitored server health, performance metrics, and audit logs</li>
-                                <li>Contributed to research and deployment of new infrastructure projects</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 5 -->
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2017 - 2020</span>
-                        <h3 class="timeline-title">Senior IT System & Network Administrator</h3>
-                        <p class="timeline-company">SGH Asia Ltd - HCMC, Vietnam</p>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Managed infrastructure for 150+ end users including servers, networks, and
-                                    workstations</li>
-                                <li>Ensured seamless operation of all infrastructure components across the organization
-                                </li>
-                                <li>Led technical upgrades for firewall, VMware, and server infrastructure</li>
-                                <li>Implemented ISO-27001 framework and Disaster Recovery Plan</li>
-                                <li>Administered ITSM software solution for incident and change management</li>
-                                <li>Conducted daily system audits and proactive security patching</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 6 -->
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2015 - 2017</span>
-                        <h3 class="timeline-title">System Administrator</h3>
-                        <p class="timeline-company">Vien Tin Vinh Solution Ltd - HCMC, Vietnam</p>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Performed comprehensive system administration for IT infrastructure</li>
-                                <li>Managed Windows, Linux, Backup/Restore, LAN/WAN/VPN, VMware, and AD/DNS</li>
-                                <li>Led technical projects including VMWARE, UNIFI NETWORK, MERAKI NETWORK, NAS, and
-                                    CCTV</li>
-                                <li>Provided technical support to sales teams</li>
-                                <li>Managed servers, workstations, and network applications</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ========================================
          SKILLS SECTION
@@ -2293,6 +2924,22 @@
         }
 
         window.addEventListener('scroll', activateNavLink);
+
+        // Personal projects category filter
+        const projectPills = document.querySelectorAll('.proj-pill');
+        const projectCards = document.querySelectorAll('#projects .proj-card[data-category]');
+
+        projectPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                const filter = pill.dataset.filter;
+                projectPills.forEach(p => p.setAttribute('aria-pressed', String(p === pill)));
+                projectCards.forEach(card => {
+                    card.hidden = filter !== 'all' && !card.dataset.category.split(' ').includes(filter);
+                });
+                // Layout height changed; let AOS recompute trigger offsets for cards below
+                AOS.refresh();
+            });
+        });
 
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
